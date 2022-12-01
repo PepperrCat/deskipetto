@@ -11,6 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
+        System.out.println("文件夹已经创建！");
     }
 }
