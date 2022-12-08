@@ -71,8 +71,8 @@ public class Main extends Application {
 			//修改任务栏图标
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
 			//下句隐藏任务栏图标，但javafx的stage.initStyle(Style)只能有一个起效，只好作罢
-			primaryStage.initStyle(StageStyle.UTILITY);
-//			primaryStage.initStyle(StageStyle.TRANSPARENT);//背景透明
+//			primaryStage.initStyle(StageStyle.UTILITY);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);//背景透明
 			/*
 			 * 点击任务栏的“关闭窗口”时，播放告别动画，同时使托盘的图标也关闭.
 			 * event.consume()是必需的，这样才能真正阻止Window Close事件的默认处理。
