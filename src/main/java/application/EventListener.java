@@ -1,5 +1,6 @@
 package application;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -13,6 +14,8 @@ import javafx.util.Duration;
 public class EventListener implements EventHandler<MouseEvent> {
     private ImageView imageView;
     String behavior = "Relax";
+    private static TimelinePool behaviorTimelinePool = new TimelinePool();
+    private static TimelinePool msgTimelinePool = new TimelinePool();
 
     public EventListener(ImageView imgView) {
         imageView = imgView;
@@ -21,7 +24,6 @@ public class EventListener implements EventHandler<MouseEvent> {
     public void handle(MouseEvent e) {
         if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
             loadImg("Interact");
-            new Timeline(new KeyFrame(Duration.seconds(getTime() + 0.55), ae -> mainImg())).play();
             return;
         }
         if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
@@ -62,7 +64,40 @@ public class EventListener implements EventHandler<MouseEvent> {
                             Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
                             break;
                     }
-                    new Timeline(new KeyFrame(Duration.seconds(getTime()), ae -> mainImg())).play();
+                    behaviorTimelinePool.stopAll();
+                    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(getTime()), ae -> mainImg()));
+                    behaviorTimelinePool.addTimeLine(tl);
+                    tl.play();
+                    return null;
+                }
+            };
+            new Thread(task).start();
+        }
+    }
+
+    public void loadImg(String behavior, double time) {
+        this.behavior = behavior;
+        if (!"Relax".equals(behavior)) {
+            Task<Void> task = new Task<>() {
+                @Override
+                protected Void call() throws Exception {
+                    imageView.setImage(ResourcesImage.getImage(behavior));
+                    switch (behavior) {
+                        case "Interact":
+                            Platform.runLater(() -> Main.getUi().setMsg("讨厌！", 1));
+                            break;
+                        case "Sit":
+                            Platform.runLater(() -> Main.getUi().setMsg("嗯哼~嗯哼~", 5));
+                            break;
+                        case "Sleep":
+                            Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
+                            break;
+                    }
+                    behaviorTimelinePool.stopAll();
+                    System.out.println(time);
+                    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(time), ae -> mainImg()));
+                    behaviorTimelinePool.addTimeLine(tl);
+                    tl.play();
                     return null;
                 }
             };
@@ -90,12 +125,18 @@ public class EventListener implements EventHandler<MouseEvent> {
             case "Interact":
                 return 0.3;
             case "Sit":
-                return 5;
+                return 6;
             case "Sleep":
-                return 5;
+                return 10;
             case "Special":
                 return 1;
         }
         return 0;
+    }
+    public static TimelinePool getBehaviorTimelinePool() {
+        return behaviorTimelinePool;
+    }
+    public static TimelinePool getMsgTimelinePool() {
+        return msgTimelinePool;
     }
 }

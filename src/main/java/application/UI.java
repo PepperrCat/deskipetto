@@ -147,12 +147,8 @@ public class UI implements Runnable {
 
     //退出程序时展示动画
     void end() {
-        listen.mainImg();//播放宠物的告别动画————编号为99的图片
-        double time;
-        //罗小黑的告别动画1.5秒，比丢的3秒
-        time = 3;
-        //要用Platform.runLater，不然会报错Not on FX application thread;
-        Platform.runLater(() -> setMsg("再见~"));
+        double time = 3;
+        Platform.runLater(() -> setMsg("博士，还会再见嘛T.T", time));
         //动画结束后执行退出
         new Timeline(new KeyFrame(
                 Duration.seconds(time),
@@ -183,13 +179,15 @@ public class UI implements Runnable {
         messageBox.setLayoutX(50);
         messageBox.setLayoutY(0);
         messageBox.setVisible(true);
+        EventListener.getMsgTimelinePool().stopAll();
         //设置气泡的显示时间
-        new Timeline(new KeyFrame(
+        Timeline tl = new Timeline(new KeyFrame(
                 Duration.seconds(8),
                 ae -> {
                     messageBox.setVisible(false);
-                }))
-                .play();
+                }));
+        EventListener.getMsgTimelinePool().addTimeLine(tl);
+        tl.play();
     }
 
     //用多线程来实现 经过随机时间间隔执行“自动行走”“自娱自乐”“碎碎念”的功能
@@ -201,7 +199,7 @@ public class UI implements Runnable {
         }
         while (true) {
             Random rand = new Random();
-            //随机发生自动事件，以下设置间隔为9~24秒。要注意这个时间间隔包含了动画播放的时间
+            //随机发生自动事件
             long time = (rand.nextInt(10) + 10) * 1000;
             int op = rand.nextInt(3);
             if ("Relax".equals(listen.behavior)) {
@@ -213,7 +211,7 @@ public class UI implements Runnable {
                         play();
                         break;
                     case 2:
-                        String str =  biuStrings[rand.nextInt(4)];
+                        String str = biuStrings[rand.nextInt(4)];
                         Platform.runLater(() -> setMsg(str));
                         break;
                 }
@@ -234,26 +232,32 @@ public class UI implements Runnable {
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);
         messageBox.setVisible(true);
+        EventListener.getMsgTimelinePool().stopAll();
         //设置气泡的显示时间
-        new Timeline(new KeyFrame(
+        Timeline tl = new Timeline(new KeyFrame(
                 Duration.seconds(3),
                 ae -> {
                     messageBox.setVisible(false);
-                }))
-                .play();
+                }));
+        EventListener.getMsgTimelinePool().addTimeLine(tl);
+        tl.play();
     }
+
     public void setMsg(String msg, double time) {
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);
         messageBox.setVisible(true);
+        EventListener.getMsgTimelinePool().stopAll();
         //设置气泡的显示时间
-        new Timeline(new KeyFrame(
+        Timeline tl = new Timeline(new KeyFrame(
                 Duration.seconds(time),
                 ae -> {
                     messageBox.setVisible(false);
-                }))
-                .play();
+                }));
+        EventListener.getMsgTimelinePool().addTimeLine(tl);
+        tl.play();
     }
+
     /*
      * 执行"自行走动"的功能——在水平方向上走动
      * 不默认开启是考虑到用户可能只想宠物安静呆着
