@@ -21,18 +21,19 @@ public class EventListener implements EventHandler<MouseEvent> {
         if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
         double x = e.getX();
         double y = e.getY();
-//        System.out.println(x + " " + y);//测试眼睛等部位的位置
+        System.out.println(x + " " + y);//测试眼睛等部位的位置
         //选择动作
         String behavior = Behavior(x, y);
         loadImg(behavior, 1.18);
     }
 
     private String Behavior(double x, double y) {
-        if (x > 370 && x < 420 && y > 170 && y < 200) {
+        if (x > 370 && x < 420 && y > 170 && y < 200)
             return "Interact";
-        }
         if (x > 370 && x < 410 && y > 260 && y < 310)
             return "Sit";
+        if (x > 370 && x < 410 && y > 220 && y < 250)
+            return "Sleep";
         return "Relax";
     }
 
@@ -74,7 +75,7 @@ public class EventListener implements EventHandler<MouseEvent> {
             case "Sit":
                 return 5;
             case "Sleep":
-                return 10;
+                return 5;
             case "Special":
                 return 1;
         }

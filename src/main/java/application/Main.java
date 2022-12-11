@@ -33,7 +33,7 @@ public class Main extends Application {
             imageView = new ImageView(image);
             imageView.setX(0);
             imageView.setY(0);
-            imageView.setLayoutX(-340);
+            imageView.setLayoutX(-300);
             imageView.setLayoutY(-100);
             //设置图片显示的大小
 //	      	imageView.setFitHeight(1000);

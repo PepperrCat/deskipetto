@@ -186,7 +186,7 @@ public class UI implements Runnable {
         messageBox.setAlignment(Pos.BOTTOM_CENTER);
         messageBox.setStyle("-fx-background:transparent;");
         //设置相对于父容器的位置
-        messageBox.setLayoutX(0);
+        messageBox.setLayoutX(50);
         messageBox.setLayoutY(0);
         messageBox.setVisible(true);
         //设置气泡的显示时间
