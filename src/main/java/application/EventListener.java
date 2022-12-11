@@ -2,6 +2,7 @@ package application;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -24,7 +25,7 @@ public class EventListener implements EventHandler<MouseEvent> {
         System.out.println(x + " " + y);//测试眼睛等部位的位置
         //选择动作
         String behavior = Behavior(x, y);
-        loadImg(behavior, 1.18);
+        loadImg(behavior);
     }
 
     private String Behavior(double x, double y) {
@@ -38,13 +39,24 @@ public class EventListener implements EventHandler<MouseEvent> {
     }
 
     //点击部位后加载图片
-    public void loadImg(String behavior, double time) {
+    public void loadImg(String behavior) {
         this.behavior = behavior;
         if (!"Relax".equals(behavior)) {
             Task<Void> task = new Task<>() {
                 @Override
                 protected Void call() throws Exception {
                     imageView.setImage(ResourcesImage.getImage(behavior));
+                    switch (behavior) {
+                        case "Interact":
+                            Platform.runLater(() -> Main.getUi().setMsg("讨厌！", 1));
+                            break;
+                        case "Sit":
+                            Platform.runLater(() -> Main.getUi().setMsg("嗯哼~嗯哼~", 5));
+                            break;
+                        case "Sleep":
+                            Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
+                            break;
+                    }
                     new Timeline(new KeyFrame(Duration.seconds(getTime()), ae -> mainImg())).play();
                     return null;
                 }

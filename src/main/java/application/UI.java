@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -42,18 +43,11 @@ public class UI implements Runnable {
     private Stage primaryStage;
     Thread thread;
     double x;
-    String[] lxhStrings = {
-            "好无聊。。。",
-            "陪我玩会儿吧~",
-            "《罗小黑战记》怎么还没更新",
-            "想师父了",
-            "不就是拿了颗珠子嘛，至于把我打回猫形嘛"
-    };
     String[] biuStrings = {
-            "想吃东西。。",
-            "biu~",
-            "揉揉小肚几",
-            "比丢这么可爱，怎么可以欺负比丢"
+            "博士，该休息了！",
+            "阿米娅想吃东西了",
+            "博士，不可以摸鱼哦！",
+            "博士，可以摸摸我嘛？"
     };
 
     public UI(ImageView view, int pet, EventListener el, Stage s) {
@@ -201,17 +195,21 @@ public class UI implements Runnable {
     //用多线程来实现 经过随机时间间隔执行“自动行走”“自娱自乐”“碎碎念”的功能
     public void run() {
         while (true) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Random rand = new Random();
             //随机发生自动事件，以下设置间隔为9~24秒。要注意这个时间间隔包含了动画播放的时间
             long time = (rand.nextInt(15) + 10) * 1000;
-            System.out.println("Waiting time:" + time);
             if (itemWalkable.getState() && "Relax".equals(listen.behavior)) {
                 walk();
             } else if (autoPlay.getState() && "Relax".equals(listen.behavior)) {
                 play();
-            } else if (itemSay.getState() && "Relax".equals(listen.behavior)) {
+            } else if ("Relax".equals(listen.behavior)) {
                 //随机选择要说的话。因为目前只有两个宠物，所以可以用三目运算符
-                String str = (petID == 0) ? lxhStrings[rand.nextInt(5)] : biuStrings[rand.nextInt(4)];
+                String str =  biuStrings[rand.nextInt(4)];
                 Platform.runLater(() -> setMsg(str));
             }
             try {
@@ -227,19 +225,29 @@ public class UI implements Runnable {
      * 不默认开启是考虑到用户可能不想被打扰
      */
     public void setMsg(String msg) {
-
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);
         messageBox.setVisible(true);
         //设置气泡的显示时间
         new Timeline(new KeyFrame(
-                Duration.seconds(4),
+                Duration.seconds(3),
                 ae -> {
                     messageBox.setVisible(false);
                 }))
                 .play();
     }
-
+    public void setMsg(String msg, double time) {
+        Label lbl = (Label) messageBox.getChildren().get(0);
+        lbl.setText(msg);
+        messageBox.setVisible(true);
+        //设置气泡的显示时间
+        new Timeline(new KeyFrame(
+                Duration.seconds(time),
+                ae -> {
+                    messageBox.setVisible(false);
+                }))
+                .play();
+    }
     /*
      * 执行"自行走动"的功能——在水平方向上走动
      * 不默认开启是考虑到用户可能只想宠物安静呆着
@@ -250,26 +258,30 @@ public class UI implements Runnable {
         double maxx = screenBounds.getMaxX();//获取屏幕的大小
         double width = imageView.getBoundsInLocal().getWidth();//获取imageView的宽度，也可使用.getMaxX();
         Random rand = new Random();
-        double speed = 10;//每次移动的距离
+        double speed = 5;//每次移动的距离
         //如果将要到达屏幕边缘就停下
         if (x + speed + width >= maxx | x - speed <= 0)
             return;
         //随机决定移动的时间，单位微秒ms
         long time = (rand.nextInt(4) + 3) * 1000;
-        System.out.println("Walking time:" + time);
-        int direID = rand.nextInt(2);//随机决定方向，0为左，1为右
-        //切换至对应方向的行走图
-        Image newimage;
-        if (petID == 0)
-            newimage = new Image(this.getClass().getResourceAsStream("/lxh/罗小黑w" + direID + ".gif"));
-        else {
-            newimage = new Image(this.getClass().getResourceAsStream("/biu/biuw" + direID + ".gif"));
-        }
-        imageView.setImage(newimage);
-        //移动
-        Move move = new Move(time, imageView, direID, primaryStage, listen);
-        thread = new Thread(move);
-        thread.start();
+//        System.out.println("Walking time:" + time);
+//        int direID = rand.nextInt(2);//随机决定方向，0为左，1为右
+        int direID = 1;
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                //切换至对应方向的行走图
+                imageView.setImage(ResourcesImage.getImage("Move"));
+                //移动
+                System.out.println(time);
+                listen.behavior = "Move";
+                Move move = new Move(time, imageView, direID, primaryStage, listen);
+                thread = new Thread(move);
+                thread.start();
+                return null;
+            }
+        };
+        new Thread(task).start();
     }
 
     /*
@@ -279,7 +291,7 @@ public class UI implements Runnable {
      */
     void play() {
         String behavior = randomAction();
-        listen.loadImg(behavior, 3);
+        listen.loadImg(behavior);
     }
 
     String randomAction() {

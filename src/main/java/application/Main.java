@@ -20,7 +20,7 @@ public class Main extends Application {
     private static String petSkin = "default";
     double xOffset = 0;
     double yOffset = 0;
-
+    private static UI ui;
     public void start(Stage Stage) {
         try {
             /*
@@ -45,8 +45,8 @@ public class Main extends Application {
             imageView.setPreserveRatio(true); //保留 width：height的比例
             imageView.setStyle("-fx-background:transparent;");//容器背景设为透明
 
-            UI ui = new UI(imageView, petID, listen, primaryStage);
-            ui.addMessageBox("你好吖~");
+            ui = new UI(imageView, petID, listen, primaryStage);
+            ui.addMessageBox("博士，欢迎回来!");
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
 
@@ -73,7 +73,7 @@ public class Main extends Application {
             //修改任务栏图标
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
             //下句隐藏任务栏图标，但javafx的stage.initStyle(Style)只能有一个起效，只好作罢
-//			primaryStage.initStyle(StageStyle.UTILITY);
+			primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.initStyle(StageStyle.TRANSPARENT);//背景透明
             /*
              * 点击任务栏的“关闭窗口”时，播放告别动画，同时使托盘的图标也关闭.
@@ -118,5 +118,9 @@ public class Main extends Application {
 
     public static void setPetSkin(String petSkin) {
         Main.petSkin = petSkin;
+    }
+
+    public static UI getUi() {
+        return ui;
     }
 }
