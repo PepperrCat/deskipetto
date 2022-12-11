@@ -40,6 +40,7 @@ public class Move extends Thread {
                 e -> {
                     exit = true;
                     listen.mainImg();
+                    Main.getUi().getMessageBox().setVisible(false);
                 });
         while (!exit) {
             //如果petID!=listen.petID，则已“切换宠物”，此时要结束运动。
@@ -52,6 +53,7 @@ public class Move extends Thread {
             if (x + speed + width >= maxx || x - speed <= 0 || time <= 0) {
                 this.interrupt();
                 listen.mainImg();
+                Main.getUi().getMessageBox().setVisible(false);
                 return;
             }
             if (direID == 0) {    //向左走

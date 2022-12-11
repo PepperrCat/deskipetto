@@ -194,15 +194,15 @@ public class UI implements Runnable {
 
     //用多线程来实现 经过随机时间间隔执行“自动行走”“自娱自乐”“碎碎念”的功能
     public void run() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         while (true) {
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             Random rand = new Random();
             //随机发生自动事件，以下设置间隔为9~24秒。要注意这个时间间隔包含了动画播放的时间
-            long time = (rand.nextInt(15) + 10) * 1000;
+            long time = (rand.nextInt(10) + 10) * 1000;
             int op = rand.nextInt(3);
             if ("Relax".equals(listen.behavior)) {
                 switch (op) {
@@ -278,6 +278,7 @@ public class UI implements Runnable {
             protected Void call() throws Exception {
                 //切换至对应方向的行走图
                 imageView.setImage(ResourcesImage.getImage("Move"));
+                Platform.runLater(() -> setMsg("嘟嘟嘟~", time));
                 //移动
                 listen.behavior = "Move";
                 Move move = new Move(time, imageView, direID, primaryStage, listen);

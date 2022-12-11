@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Scene;
@@ -67,12 +68,14 @@ public class Main extends Application {
 
             primaryStage.setScene(scene);
             //设置窗体的初始位置
-            primaryStage.setX(850);
-            primaryStage.setY(400);
+            primaryStage.setX(Screen.getPrimary().getVisualBounds().getMinX());
+
+            primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 200);
             primaryStage.setAlwaysOnTop(true);//窗口总显示在最前
+            primaryStage.requestFocus();
             //修改任务栏图标
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
-            //下句隐藏任务栏图标，但javafx的stage.initStyle(Style)只能有一个起效，只好作罢
+
 			primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.initStyle(StageStyle.TRANSPARENT);//背景透明
             /*

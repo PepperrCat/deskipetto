@@ -19,6 +19,11 @@ public class EventListener implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent e) {
+        if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
+            loadImg("Interact");
+            new Timeline(new KeyFrame(Duration.seconds(getTime() + 0.55), ae -> mainImg())).play();
+            return;
+        }
         if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
         double x = e.getX();
         double y = e.getY();
@@ -31,10 +36,10 @@ public class EventListener implements EventHandler<MouseEvent> {
     private String Behavior(double x, double y) {
         if (x > 370 && x < 420 && y > 170 && y < 200)
             return "Interact";
-        if (x > 370 && x < 410 && y > 260 && y < 310)
-            return "Sit";
-        if (x > 370 && x < 410 && y > 220 && y < 250)
-            return "Sleep";
+//        if (x > 370 && x < 410 && y > 260 && y < 310)
+//            return "Sit";
+//        if (x > 370 && x < 410 && y > 220 && y < 250)
+//            return "Sleep";
         return "Relax";
     }
 
