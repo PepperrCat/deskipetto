@@ -72,7 +72,6 @@ public class Main extends Application {
 
             primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 200);
             primaryStage.setAlwaysOnTop(true);//窗口总显示在最前
-            primaryStage.requestFocus();
             //修改任务栏图标
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
 
