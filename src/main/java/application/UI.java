@@ -279,7 +279,6 @@ public class UI implements Runnable {
                 //切换至对应方向的行走图
                 imageView.setImage(ResourcesImage.getImage("Move"));
                 //移动
-                System.out.println(time);
                 listen.behavior = "Move";
                 Move move = new Move(time, imageView, direID, primaryStage, listen);
                 thread = new Thread(move);

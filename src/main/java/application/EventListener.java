@@ -22,7 +22,7 @@ public class EventListener implements EventHandler<MouseEvent> {
         if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
         double x = e.getX();
         double y = e.getY();
-        System.out.println(x + " " + y);//测试眼睛等部位的位置
+//        System.out.println(x + " " + y);//测试眼睛等部位的位置
         //选择动作
         String behavior = Behavior(x, y);
         loadImg(behavior);
