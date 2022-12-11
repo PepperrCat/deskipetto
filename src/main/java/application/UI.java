@@ -203,14 +203,20 @@ public class UI implements Runnable {
             Random rand = new Random();
             //随机发生自动事件，以下设置间隔为9~24秒。要注意这个时间间隔包含了动画播放的时间
             long time = (rand.nextInt(15) + 10) * 1000;
-            if (itemWalkable.getState() && "Relax".equals(listen.behavior)) {
-                walk();
-            } else if (autoPlay.getState() && "Relax".equals(listen.behavior)) {
-                play();
-            } else if ("Relax".equals(listen.behavior)) {
-                //随机选择要说的话。因为目前只有两个宠物，所以可以用三目运算符
-                String str =  biuStrings[rand.nextInt(4)];
-                Platform.runLater(() -> setMsg(str));
+            int op = rand.nextInt(3);
+            if ("Relax".equals(listen.behavior)) {
+                switch (op) {
+                    case 0:
+                        walk();
+                        break;
+                    case 1:
+                        play();
+                        break;
+                    case 2:
+                        String str =  biuStrings[rand.nextInt(4)];
+                        Platform.runLater(() -> setMsg(str));
+                        break;
+                }
             }
             try {
                 Thread.sleep(time);
