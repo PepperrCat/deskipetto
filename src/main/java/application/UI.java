@@ -46,8 +46,8 @@ public class UI implements Runnable {
     private Stage primaryStage;
     Thread thread;
     double x;
-    DialogAnalysis dialogAnalysis;
-    MediaPlayer mediaPlayer;
+    private DialogAnalysis dialogAnalysis;
+    private MediaPlayer mediaPlayer;
 
     public UI(ImageView view, EventListener el, Stage s) {
         imageView = view;
@@ -352,5 +352,14 @@ public class UI implements Runnable {
 
     public void setMessageBox(VBox messageBox) {
         this.messageBox = messageBox;
+    }
+
+    public void stopMedia() {
+        if (mediaPlayer != null)
+            mediaPlayer.stop();
+    }
+
+    public DialogAnalysis getDialogAnalysis() {
+        return dialogAnalysis;
     }
 }

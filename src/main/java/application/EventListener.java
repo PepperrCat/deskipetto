@@ -22,6 +22,7 @@ public class EventListener implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent e) {
+        Main.getUi().stopMedia();
         if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
             loadImg("Interact");
             return;
@@ -55,7 +56,7 @@ public class EventListener implements EventHandler<MouseEvent> {
                     imageView.setImage(ResourcesImage.getImage(behavior));
                     switch (behavior) {
                         case "Interact":
-                            Platform.runLater(() -> Main.getUi().setMsg("Ã÷—·£°", 1));
+                            Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
                             Platform.runLater(() -> Main.getUi().setMsg("‡≈∫ﬂ~‡≈∫ﬂ~", 5));
@@ -84,7 +85,7 @@ public class EventListener implements EventHandler<MouseEvent> {
                     imageView.setImage(ResourcesImage.getImage(behavior));
                     switch (behavior) {
                         case "Interact":
-                            Platform.runLater(() -> Main.getUi().setMsg("Ã÷—·£°", 1));
+                            Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
                             Platform.runLater(() -> Main.getUi().setMsg("‡≈∫ﬂ~‡≈∫ﬂ~", 5));
