@@ -20,6 +20,7 @@ public class Main extends Application {
     double xOffset = 0;
     double yOffset = 0;
     private static UI ui;
+    private static MenuBar menuBar;
     public void start(Stage Stage) {
         try {
             /*
@@ -49,7 +50,7 @@ public class Main extends Application {
             ui.setMsg(ui.getDialogAnalysis().getDialog(42));
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
-
+            menuBar=new MenuBar(imageView,listen,pane);
             pane.setStyle("-fx-background:transparent;");
             //使窗体能拖动。先获取按下鼠标时的坐标p1，再将窗体坐标设为p1加拖动的位移量
             pane.setOnMousePressed(event -> {
@@ -120,7 +121,7 @@ public class Main extends Application {
     public static void setPetSkin(String petSkin) {
         Main.petSkin = petSkin;
     }
-
+    public static MenuBar getMenuBar(){ return menuBar;}
     public static UI getUi() {
         return ui;
     }
