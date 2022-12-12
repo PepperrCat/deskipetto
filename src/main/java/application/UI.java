@@ -182,16 +182,6 @@ public class UI implements Runnable {
         //设置相对于父容器的位置
         messageBox.setLayoutX(50);
         messageBox.setLayoutY(0);
-        messageBox.setVisible(true);
-        EventListener.getMsgTimelinePool().stopAll();
-        //设置气泡的显示时间
-        Timeline tl = new Timeline(new KeyFrame(
-                Duration.seconds(8),
-                ae -> {
-                    messageBox.setVisible(false);
-                }));
-        EventListener.getMsgTimelinePool().addTimeLine(tl);
-        tl.play();
     }
 
     //用多线程来实现 经过随机时间间隔执行“自动行走”“自娱自乐”“碎碎念”的功能

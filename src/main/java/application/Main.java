@@ -46,6 +46,7 @@ public class Main extends Application {
 
             ui = new UI(imageView, listen, primaryStage);
             ui.addMessageBox("≤© ø£¨ª∂”≠ªÿ¿¥!");
+            ui.setMsg(ui.getDialogAnalysis().getDialog(42));
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
 
