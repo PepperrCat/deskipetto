@@ -135,9 +135,9 @@ public class EventListener implements EventHandler<MouseEvent> {
             case "Interact":
                 return 0.3;
             case "Sit":
-                return 6;
+                return 15;
             case "Sleep":
-                return 10;
+                return 15;
             case "Special":
                 return 1;
         }
