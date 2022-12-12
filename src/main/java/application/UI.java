@@ -271,25 +271,21 @@ public class UI implements Runnable {
      * 不默认开启是考虑到用户可能只想宠物安静呆着
      */
     void walk() {
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        x = primaryStage.getX();//stage的左边缘坐标
-        double maxx = screenBounds.getMaxX();//获取屏幕的大小
-        double width = imageView.getBoundsInLocal().getWidth();//获取imageView的宽度，也可使用.getMaxX();
+
         Random rand = new Random();
-        double speed = 5;//每次移动的距离
         //如果将要到达屏幕边缘就停下
-        if (x + speed + width >= maxx | x - speed <= 0)
-            return;
         //随机决定移动的时间，单位微秒ms
         long time = (rand.nextInt(4) + 3) * 1000;
 //        System.out.println("Walking time:" + time);
-//        int direID = rand.nextInt(2);//随机决定方向，0为左，1为右
-        int direID = 1;
+        int direID = rand.nextInt(2);//随机决定方向，0为左，1为右
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
                 //切换至对应方向的行走图
-                imageView.setImage(ResourcesImage.getImage("Move"));
+                if (direID == 1)
+                    imageView.setImage(ResourcesImage.getImage("Move"));
+                else
+                    imageView.setImage(ResourcesImage.getImage("MoveF"));
                 Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                 //移动
                 listen.behavior = "Move";

@@ -50,10 +50,13 @@ public class Move extends Thread {
             x = stage.getX();
             maxx = screenBounds.getMaxX();
             double speed = 0.12;
-            if (x + speed + width >= maxx || x - speed <= 0 || time <= 0) {
+            if ((direID == 1 && x + speed + width >= maxx) || time <= 0) {
                 this.interrupt();
                 listen.mainImg();
-                Main.getUi().getMessageBox().setVisible(false);
+                return;
+            } else if (direID == 0 && x - speed <= 0) {
+                this.interrupt();
+                listen.mainImg();
                 return;
             }
             if (direID == 0) {    //Ïò×ó×ß

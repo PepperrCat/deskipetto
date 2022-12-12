@@ -9,6 +9,7 @@ public class ResourcesImage {
     private static Image Sleep;
     private static Image Interact;
     private static Image Special;
+    private static Image MoveF;
 
     public static Image getSpecial() {
         return Special;
@@ -44,6 +45,12 @@ public class ResourcesImage {
         else return Interact;
     }
 
+    public static Image getMoveF() {
+        if (MoveF == null)
+            return new Image(ResourcesImage.class.getResourceAsStream("/" + Main.getPetName() + "/" + Main.getPetSkin() + "/MoveF.gif"));
+        else return MoveF;
+    }
+
     public static Image getImage(String behavior) {
         switch (behavior) {
             case "Relax":
@@ -58,6 +65,8 @@ public class ResourcesImage {
                 return getSleep();
             case "Special":
                 return getSpecial();
+            case "MoveF":
+                return getMoveF();
         }
         return Relax;
     }

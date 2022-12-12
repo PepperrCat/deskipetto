@@ -29,7 +29,8 @@ public class EventListener implements EventHandler<MouseEvent> {
                 loadImg("Interact");
                 return;
             }
-            if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
+            if (!"Relax".equals(behavior))
+                return;    //如果动作没做完，就不允许再做新的动作
             double x = e.getX();
             double y = e.getY();
 //        System.out.println(x + " " + y);//测试眼睛等部位的位置
