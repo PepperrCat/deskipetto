@@ -37,7 +37,6 @@ import javafx.util.Duration;
 
 public class UI implements Runnable {
     private ImageView imageView;
-    private int petID;
     private EventListener listen;
     private VBox messageBox;
     private CheckboxMenuItem itemWalkable;
@@ -50,9 +49,8 @@ public class UI implements Runnable {
     DialogAnalysis dialogAnalysis;
     MediaPlayer mediaPlayer;
 
-    public UI(ImageView view, int pet, EventListener el, Stage s) {
+    public UI(ImageView view, EventListener el, Stage s) {
         imageView = view;
-        petID = pet;
         listen = el;
         primaryStage = s;
         dialogAnalysis = new DialogAnalysis();

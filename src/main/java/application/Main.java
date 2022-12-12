@@ -15,8 +15,6 @@ import javafx.scene.layout.VBox;
 public class Main extends Application {
     private static ImageView imageView;
     EventListener listen;
-    VBox messageBox;
-    int petID = 1;//宠物ID。罗小黑=0，比丢=1
     private static String petName = "002_amiya";
     private static String petSkin = "default";
     double xOffset = 0;
@@ -46,7 +44,7 @@ public class Main extends Application {
             imageView.setPreserveRatio(true); //保留 width：height的比例
             imageView.setStyle("-fx-background:transparent;");//容器背景设为透明
 
-            ui = new UI(imageView, petID, listen, primaryStage);
+            ui = new UI(imageView, listen, primaryStage);
             ui.addMessageBox("博士，欢迎回来!");
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
