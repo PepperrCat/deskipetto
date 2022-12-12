@@ -59,10 +59,8 @@ public class EventListener implements EventHandler<MouseEvent> {
                             Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
-                            Platform.runLater(() -> Main.getUi().setMsg("àÅºß~àÅºß~", 5));
-                            break;
                         case "Sleep":
-                            Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
+                            Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().randomDialog()));
                             break;
                     }
                     behaviorTimelinePool.stopAll();
@@ -88,10 +86,8 @@ public class EventListener implements EventHandler<MouseEvent> {
                             Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
-                            Platform.runLater(() -> Main.getUi().setMsg("àÅºß~àÅºß~", 5));
-                            break;
                         case "Sleep":
-                            Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
+                            Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().randomDialog()));
                             break;
                     }
                     behaviorTimelinePool.stopAll();
