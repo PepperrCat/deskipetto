@@ -8,7 +8,9 @@ import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -25,6 +27,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Screen;
@@ -33,7 +37,6 @@ import javafx.util.Duration;
 
 public class UI implements Runnable {
     private ImageView imageView;
-    private int petID;
     private EventListener listen;
     private VBox messageBox;
     private CheckboxMenuItem itemWalkable;
@@ -43,18 +46,19 @@ public class UI implements Runnable {
     private Stage primaryStage;
     Thread thread;
     double x;
-    String[] biuStrings = {
-            "博士，该休息了！",
-            "阿米娅想吃东西了",
-            "博士，不可以摸鱼哦！",
-            "博士，可以摸摸我嘛？"
-    };
+    private DialogAnalysis dialogAnalysis;
+    private MediaPlayer mediaPlayer;
 
-    public UI(ImageView view, int pet, EventListener el, Stage s) {
+    public UI(ImageView view, EventListener el, Stage s) {
         imageView = view;
-        petID = pet;
         listen = el;
         primaryStage = s;
+        dialogAnalysis = new DialogAnalysis();
+        try {
+            dialogAnalysis.startAnalyse();
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //添加系统托盘
@@ -160,7 +164,7 @@ public class UI implements Runnable {
     public void addMessageBox(String message) {
         Label bubble = new Label(message);
         //设置气泡的宽度。如果没有这句，就会根据内容多少来自适应宽度
-        bubble.setPrefWidth(100);
+        bubble.setPrefWidth(150);
         bubble.setWrapText(true);//自动换行
         bubble.setStyle("-fx-background-color: DarkTurquoise; -fx-background-radius: 8px;");
         bubble.setPadding(new Insets(7));//标签的内边距的宽度
@@ -202,17 +206,18 @@ public class UI implements Runnable {
             //随机发生自动事件
             long time = (rand.nextInt(10) + 10) * 1000;
             int op = rand.nextInt(3);
+//            int op = 2;
             if ("Relax".equals(listen.behavior)) {
                 switch (op) {
-                    case 0:
-                        walk();
-                        break;
                     case 1:
                         play();
                         break;
                     case 2:
-                        String str = biuStrings[rand.nextInt(4)];
-                        Platform.runLater(() -> setMsg(str));
+                        Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
+                        break;
+                    default:
+                        System.out.println("walk begin");
+                        walk();
                         break;
                 }
             }
@@ -256,6 +261,20 @@ public class UI implements Runnable {
                 }));
         EventListener.getMsgTimelinePool().addTimeLine(tl);
         tl.play();
+    }
+
+    public void setMsg(Dialog dialog) {
+        Label lbl = (Label) messageBox.getChildren().get(0);
+        lbl.setText(dialog.getDetail("simplifiedChinese"));
+        messageBox.setVisible(true);
+        EventListener.getMsgTimelinePool().stopAll();
+        if (mediaPlayer != null)
+            mediaPlayer.stop();
+        mediaPlayer = new MediaPlayer(new Media(this.getClass().getResource("/" + Main.getPetName() + "/dialog/" + dialog.getVoiceFilename()).toExternalForm()));
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(() -> {
+            messageBox.setVisible(false);
+        });
     }
 
     /*
@@ -333,5 +352,14 @@ public class UI implements Runnable {
 
     public void setMessageBox(VBox messageBox) {
         this.messageBox = messageBox;
+    }
+
+    public void stopMedia() {
+        if (mediaPlayer != null)
+            mediaPlayer.stop();
+    }
+
+    public DialogAnalysis getDialogAnalysis() {
+        return dialogAnalysis;
     }
 }
