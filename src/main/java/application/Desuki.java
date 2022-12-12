@@ -15,7 +15,6 @@ public class Desuki {
     }
 
 
-
     public static Desuki getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Desuki();
@@ -438,8 +437,6 @@ public class Desuki {
             }
             default:
                 break;
-
-
         }
     }
 

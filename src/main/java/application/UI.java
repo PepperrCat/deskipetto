@@ -194,7 +194,7 @@ public class UI implements Runnable {
         while (true) {
             Random rand = new Random();
             //随机发生自动事件
-            long time = (rand.nextInt(10) + 10) * 1000;
+            long time = (rand.nextInt(10) + 20) * 1000;
             int op = rand.nextInt(3);
 //            int op = 2;
             if ("Relax".equals(listen.behavior)) {
@@ -206,7 +206,6 @@ public class UI implements Runnable {
                         Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                         break;
                     default:
-                        System.out.println("walk begin");
                         walk();
                         break;
                 }
@@ -291,7 +290,7 @@ public class UI implements Runnable {
             protected Void call() throws Exception {
                 //切换至对应方向的行走图
                 imageView.setImage(ResourcesImage.getImage("Move"));
-                Platform.runLater(() -> setMsg("嘟嘟嘟~", time));
+                Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                 //移动
                 listen.behavior = "Move";
                 Move move = new Move(time, imageView, direID, primaryStage, listen);
@@ -315,13 +314,11 @@ public class UI implements Runnable {
 
     String randomAction() {
         Random rand = new Random();
-        int id = rand.nextInt(3);
+        int id = rand.nextInt(2);
         switch (id) {
             case 0:
-                return "Interact";
-            case 1:
                 return "Sit";
-            case 2:
+            case 1:
                 return "Sleep";
             default:
                 return "Relax";
