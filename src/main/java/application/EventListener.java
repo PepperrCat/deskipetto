@@ -24,6 +24,7 @@ public class EventListener implements EventHandler<MouseEvent> {
     public void handle(MouseEvent e) {
         //
         if (e.getButton().name().equals("PRIMARY")) {
+            Main.getUi().stopMedia();
             if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
                 loadImg("Interact");
                 return;
