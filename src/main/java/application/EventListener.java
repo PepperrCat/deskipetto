@@ -37,7 +37,7 @@ public class EventListener implements EventHandler<MouseEvent> {
             loadImg(behavior);
         }
         else {//ÓÒ¼üÊÂ¼ş
-
+            Main.getMenuBar().change();
         }
     }
 
