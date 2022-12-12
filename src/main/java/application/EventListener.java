@@ -22,26 +22,35 @@ public class EventListener implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent e) {
-        if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
-            loadImg("Interact");
-            return;
-        }
-        if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
-        double x = e.getX();
-        double y = e.getY();
+        if (e.getButton().name().equals("PRIMARY")) {
+            if ("Sleep".equals(behavior) || "Sit".equals(behavior)) {
+                loadImg("Interact");
+                return;
+            }
+            if (!"Relax".equals(behavior)) return;    //如果动作没做完，就不允许再做新的动作
+            double x = e.getX();
+            double y = e.getY();
 //        System.out.println(x + " " + y);//测试眼睛等部位的位置
-        //选择动作
-        String behavior = Behavior(x, y);
-        loadImg(behavior);
+            //选择动作
+            String behavior = Behavior(x, y);
+            loadImg(behavior);
+        }
+        else {//右键事件
+
+        }
     }
 
     private String Behavior(double x, double y) {
-        if (x > 370 && x < 420 && y > 170 && y < 200)
+        Desuki desuki = Desuki.getInstance();
+        if (x > 370 && x < 420 && y > 170 && y < 200) {
+            desuki.addGrade(2);
             return "Interact";
+        }
 //        if (x > 370 && x < 410 && y > 260 && y < 310)
 //            return "Sit";
 //        if (x > 370 && x < 410 && y > 220 && y < 250)
 //            return "Sleep";
+        desuki.addGrade(1);
         return "Relax";
     }
 
@@ -133,9 +142,11 @@ public class EventListener implements EventHandler<MouseEvent> {
         }
         return 0;
     }
+
     public static TimelinePool getBehaviorTimelinePool() {
         return behaviorTimelinePool;
     }
+
     public static TimelinePool getMsgTimelinePool() {
         return msgTimelinePool;
     }
