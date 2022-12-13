@@ -193,19 +193,23 @@ public class UI implements Runnable {
         }
         while (true) {
             Random rand = new Random();
-            //随机发生自动事件
-            long time = (rand.nextInt(10) + 20) * 1000;
+//            随机发生自动事件
+            long time = (rand.nextInt(10) + 30) * 1000;
+//            long time = 5000;
             int op = rand.nextInt(3);
-//            int op = 2;
-            if ("Relax".equals(listen.behavior)) {
+//            int op = 0;
+            if ("Relax".equals(listen.getBehavior())) {
                 switch (op) {
                     case 1:
+                        System.out.println("play");
                         play();
                         break;
                     case 2:
+                        System.out.println("dialog");
                         Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                         break;
                     default:
+                        System.out.println("walk");
                         walk();
                         break;
                 }
@@ -271,7 +275,6 @@ public class UI implements Runnable {
      * 不默认开启是考虑到用户可能只想宠物安静呆着
      */
     void walk() {
-
         Random rand = new Random();
         //如果将要到达屏幕边缘就停下
         //随机决定移动的时间，单位微秒ms
@@ -288,7 +291,7 @@ public class UI implements Runnable {
                     imageView.setImage(ResourcesImage.getImage("MoveF"));
                 Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                 //移动
-                listen.behavior = "Move";
+                listen.setBehavior("Move");
                 Move move = new Move(time, imageView, direID, primaryStage, listen);
                 thread = new Thread(move);
                 thread.start();

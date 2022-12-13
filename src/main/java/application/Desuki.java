@@ -7,7 +7,7 @@ package application;
  * @date: 2022/12/12 17:30
  */
 public class Desuki {
-    int likeGrade = 0;
+    private int likeGrade = 0;
     private static Desuki INSTANCE = null;
 
     private Desuki() {
@@ -23,7 +23,11 @@ public class Desuki {
 
     }
 
-     void addGrade(int grade) {
+    public int getLikeGrade() {
+        return likeGrade;
+    }
+
+    void addGrade(int grade) {
         likeGrade += grade;
         checkGrade();
          System.out.println("love grade:"+likeGrade);

@@ -44,7 +44,7 @@ public class Move extends Thread {
                 });
         while (!exit) {
             //如果petID!=listen.petID，则已“切换宠物”，此时要结束运动。
-            if (!"Move".equals(listen.behavior))
+            if (!"Move".equals(listen.getBehavior()))
                 break;
             width = imageView.getBoundsInLocal().getMaxX() - 600;
             x = stage.getX();
