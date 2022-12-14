@@ -22,7 +22,7 @@ public class EventListener implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent e) {
-        //
+        //git fetch --unshallow
         if (e.getButton().name().equals("PRIMARY")) {
             Main.getUi().stopMedia();
             if ("Sleep".equals(getBehavior()) || "Sit".equals(getBehavior())) {

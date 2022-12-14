@@ -1,13 +1,20 @@
 package application;
 
-import javafx.geometry.Pos;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+
+
+import java.util.Objects;
+import java.util.Optional;
 
 
 public class MenuBar {
@@ -17,27 +24,74 @@ public class MenuBar {
     private AnchorPane pane;
     private boolean flag;
     private static VBox menuBox;
-    public MenuBar(ImageView imageView,EventListener listen,AnchorPane pane) {
+
+    public MenuBar(ImageView imageView, EventListener listen, AnchorPane pane) {
         this.imageView = imageView;
         this.listen = listen;
         this.pane = pane;
-        menuBox=new VBox();
-        flag=false;
+        menuBox = new VBox();
+        flag = false;
         pane.getChildren().add(menuBox);
         menuBox.setLayoutX(165);
         menuBox.setLayoutY(50);
         menuBox.setSpacing(10);
         menuBox.setVisible(false);
-        Button b1=new Button("Skin resurfacing");
-        Button b2=new Button("Conversation");
-        Button b3=new Button("Feeding");
-        Button b4=new Button("Wait for the addition");
-        menuBox.getChildren().addAll(b1,b2,b3,b4);
+        Button b1 = new Button("Skin resurfacing");
+        Button b2 = new Button("Conversation");
+        Button b3 = new Button("Feeding");
+        Button b4 = new Button("Wait for the addition");
+        Button b5 = new Button("Talk");
+
+        TextInputDialog td = new TextInputDialog();
+
+        Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
+//        stage.getIcons().add()
+
+        stage.getIcons().add(new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
+                "/icon.png"))));
+        /**T
+         *¿ÉÒÔÊÔ×Å°Ñ¶Ô»°¿òÑùÊ½»»Ò»»»
+         */
+//        System.out.println( stage.getScene());
+
+
+        b5.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * b5°´Å¥£ºÆôÓÃai¶Ô»°
+             * ÒÑÖªbug£ºµÚÒ»¸ö×Ö·ûÎª¿Õ¸ñÊ±ºò»á±¨´í
+             * ÇëÊ¹ÓÃGBK
+             */
+
+            @Override
+            public void handle(ActionEvent event) {
+                //event.getSource()»ñÈ¡Ò»¸öObject¶ÔÏó Êµ¼Ê¾ÍÊÇÕâ¸öbutton ÕâÀïÎÒÃÇĞèÒªÇ¿ÖÆ×ªĞĞ
+                td.setHeaderText("ÄãºÃ°¡");
+                Optional<String> result = td.showAndWait();
+//                String str= td.getEditor().getText().trim();
+                if (result.isPresent()) {
+//                    System.out.println(result.get());
+                    try {
+                        String speak = HttpClient.sendGet(result.get());
+                        System.out.println(speak);
+                        Platform.runLater(() -> Main.getUi().setMsg(speak, 5));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+
+                //´òÓ¡buttonµÄtextÎÄ±¾ĞÅÏ¢¿ÉÒÔÑéÖ¤
+
+
+            }
+        });
+        menuBox.getChildren().addAll(b1, b2, b3, b4, b5);
     }
-    public void change(){
-        //å¦‚æœflag=falseï¼Œæ‰“å¼€èœå•ï¼Œå¦åˆ™å…³é—­èœå•
-        if(flag) menuBox.setVisible(false);
+
+    public void change() {
+        //Èç¹ûflag=false£¬´ò¿ª²Ëµ¥£¬·ñÔò¹Ø±Õ²Ëµ¥
+        if (flag) menuBox.setVisible(false);
         else menuBox.setVisible(true);
-        flag =!flag;
+        flag = !flag;
     }
 }
