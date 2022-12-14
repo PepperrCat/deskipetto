@@ -29,8 +29,8 @@ public class Main extends Application {
              * 路径中第一个“/”是必需的，它表示类的根目录，类文件夹在此项目中与lxh和biu在同一级
              */
             Stage primaryStage = new Stage();
-            Image image = ResourcesImage.getRelax();
-            imageView = new ImageView(image);
+
+            imageView = new ImageView();
             imageView.setX(0);
             imageView.setY(0);
             imageView.setLayoutX(-300);
@@ -48,6 +48,7 @@ public class Main extends Application {
             ui = new UI(imageView, listen, primaryStage);
             ui.addMessageBox("博士，欢迎回来!");
             ui.setMsg(ui.getDialogAnalysis().getDialog(42));
+            imageView.setImage(ui.getImage("Relax"));
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
             menuBar=new MenuBar(imageView,listen,pane);

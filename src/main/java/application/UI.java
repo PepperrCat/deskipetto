@@ -45,7 +45,7 @@ public class UI implements Runnable {
     private MenuItem itemSwitch;
     private Stage primaryStage;
     Thread thread;
-    double x;
+    private ResourcesImage resourcesImage;
     private DialogAnalysis dialogAnalysis;
     private MediaPlayer mediaPlayer;
 
@@ -54,6 +54,7 @@ public class UI implements Runnable {
         listen = el;
         primaryStage = s;
         dialogAnalysis = new DialogAnalysis();
+        resourcesImage = new ResourcesImage();
         try {
             dialogAnalysis.startAnalyse();
         } catch (IOException | URISyntaxException e) {
@@ -286,9 +287,9 @@ public class UI implements Runnable {
             protected Void call() throws Exception {
                 //切换至对应方向的行走图
                 if (direID == 1)
-                    imageView.setImage(ResourcesImage.getImage("Move"));
+                    imageView.setImage(resourcesImage.getImage("Move"));
                 else
-                    imageView.setImage(ResourcesImage.getImage("MoveF"));
+                    imageView.setImage(resourcesImage.getImage("MoveF"));
                 Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
                 //移动
                 listen.setBehavior("Move");
@@ -347,5 +348,8 @@ public class UI implements Runnable {
 
     public DialogAnalysis getDialogAnalysis() {
         return dialogAnalysis;
+    }
+    public Image getImage(String behavior) {
+        return resourcesImage.getImage(behavior);
     }
 }

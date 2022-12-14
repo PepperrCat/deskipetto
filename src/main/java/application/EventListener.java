@@ -62,7 +62,7 @@ public class EventListener implements EventHandler<MouseEvent> {
             Task<Void> task = new Task<>() {
                 @Override
                 protected Void call() throws Exception {
-                    imageView.setImage(ResourcesImage.getImage(getBehavior()));
+                    imageView.setImage(Main.getUi().getImage(getBehavior()));
                     switch (getBehavior()) {
                         case "Interact":
                             if (Desuki.getInstance().getLikeGrade() >= 10)
@@ -94,7 +94,7 @@ public class EventListener implements EventHandler<MouseEvent> {
             Task<Void> task = new Task<>() {
                 @Override
                 protected Void call() throws Exception {
-                    imageView.setImage(ResourcesImage.getImage(getBehavior()));
+                    imageView.setImage(Main.getUi().getImage(getBehavior()));
                     switch (getBehavior()) {
                         case "Interact":
                             Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
@@ -123,7 +123,7 @@ public class EventListener implements EventHandler<MouseEvent> {
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                imageView.setImage(ResourcesImage.getImage(getBehavior()));
+                imageView.setImage(Main.getUi().getImage(getBehavior()));
                 return null;
             }
         };
