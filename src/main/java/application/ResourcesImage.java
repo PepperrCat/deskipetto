@@ -1,5 +1,7 @@
 package application;
 
+import com.sun.javafx.iio.gif.GIFDescriptor;
+import com.sun.javafx.iio.gif.GIFImageLoaderFactory;
 import javafx.scene.image.Image;
 
 public class ResourcesImage {
