@@ -72,6 +72,28 @@ public class ResourcesImage {
         System.out.println(Main.getPetSkin());
         Main.getImageView().setImage(Main.getUi().getImage("Relax"));
     }
+    /*
+        *注意由于美术资源还未加入，切换宠物功能暂时不能使用，因为懒得给biu和lxh的gif改名字
+     */
+    public void switchPet(){
+        Relax=null;
+        Sit=null;
+        Move=null;
+        MoveF=null;
+        Sleep = null;
+        Interact=null;
+        if(Main.getPetName().equals("002_amiya")){
+            //Main.setPetSkin(""); 等待加入美术资源
+        }
+        else if(Main.getPetName().equals("plant")){
+            //Main.setPetSkin(""); 等待加入美术资源
+        }
+        else{
+          //  Main.setPetSkin("");  等待加入美术资源
+        }
+        System.out.println(Main.getPetName());
+        Main.getImageView().setImage(Main.getUi().getImage("Relax"));
+    }
     public Image getImage(String behavior) {
         switch (behavior) {
             case "Relax":

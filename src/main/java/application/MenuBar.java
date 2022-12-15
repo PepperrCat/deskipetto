@@ -163,17 +163,18 @@ public class MenuBar {
         b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("投喂食物");
+                System.out.println("切换人物");
                 Main.getMenuBar().change();
+               // Main.getUi().newSwitchPet(); 加入美术资源后此条命令可以使用
             }
         });
         /*
-            *第三个功能尝试做一个翻译功能
+            *第三个功能：投喂食物
          */
         b3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("有待开发");
+                System.out.println("投喂食物");
                 Main.getMenuBar().change();
 
 //                Main.getUi().switchPet();

@@ -157,6 +157,12 @@ public class UI implements Runnable {
         System.out.println("尝试切换皮肤");
         resourcesImage.switchSkin();
     }
+    /*
+        *菜单栏第二个功能，切换人物，与第一个类似
+     */
+    public void newSwitchPet(){
+        resourcesImage.switchPet();
+    }
     //退出程序时展示动画
     void end() {
         double time = 3;
