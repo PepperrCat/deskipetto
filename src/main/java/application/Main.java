@@ -114,7 +114,7 @@ public class Main extends Application {
         transparentStage.show();
         stage.initOwner(transparentStage);
     }
-
+    public static ImageView getImageView(){return imageView;}
     public static String getPetName() {
         return petName;
     }

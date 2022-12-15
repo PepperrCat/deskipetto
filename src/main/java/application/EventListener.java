@@ -40,7 +40,7 @@ public class EventListener implements EventHandler<MouseEvent> {
             Main.getMenuBar().change();
         }
     }
-
+    // 下列方法是交互动作同时提高好感度
     private String Behavior(double x, double y) {
         Desuki desuki = Desuki.getInstance();
         if (x > 370 && x < 420 && y > 170 && y < 200) {
