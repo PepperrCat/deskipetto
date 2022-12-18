@@ -139,7 +139,7 @@ public class UI implements Runnable {
         imageView.removeEventHandler(MouseEvent.MOUSE_CLICKED, listen);//移除原宠物的事件
         //切换宠物ID
 
-//		listen = new EventListener(imageView,petID);
+		//listen = new EventListener(imageView,petID);
         /*
          *修改listen.petID是为了修复bug: 在运行三个功能之一时点击切换宠物，图片会切换，但宠物动作不会停止
          *且动作完成后恢复的主图还是上一个宠物，直到下一个动作执行才变正常。
@@ -149,7 +149,20 @@ public class UI implements Runnable {
         //因为listen更新了，所以要重新添加点击事件
         imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, listen);
     }
-
+    /*
+        *尝试写菜单栏第一个功能：切换皮肤，不改变人物，只改变着装
+        *可能产生的bug，如果此时桌宠有动作，会与之产生冲突
+     */
+    public void switchSkin(){
+        System.out.println("尝试切换皮肤");
+        resourcesImage.switchSkin();
+    }
+    /*
+        *菜单栏第二个功能，切换人物，与第一个类似
+     */
+    public void newSwitchPet(){
+        resourcesImage.switchPet();
+    }
     //退出程序时展示动画
     void end() {
         double time = 3;
@@ -241,7 +254,10 @@ public class UI implements Runnable {
         EventListener.getMsgTimelinePool().addTimeLine(tl);
         tl.play();
     }
-
+/*
+setMsg可能存在线程锁死的情况，我在某次运行时卡死并且报错在257行
+当然不排除我电脑跑不动的情况
+ */
     public void setMsg(String msg, double time) {
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);

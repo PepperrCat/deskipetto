@@ -18,8 +18,11 @@ public class ResourcesImage {
     }
 
     public Image getRelax() {
-        if (Relax == null)
+        if (Relax == null){
+            System.out.println(Main.getPetName()+" \n"+Main.getPetSkin());
             Relax = new Image(ResourcesImage.class.getResource("/" + Main.getPetName() + "/" + Main.getPetSkin() + "/Relax.gif").toExternalForm());
+        }
+
         return Relax;
     }
 
@@ -52,7 +55,47 @@ public class ResourcesImage {
             MoveF = new Image(ResourcesImage.class.getResource("/" + Main.getPetName() + "/" + Main.getPetSkin() + "/MoveF.gif").toExternalForm());
         return MoveF;
     }
-
+    public void switchSkin(){
+        Relax=null;
+        Sit=null;
+        Move=null;
+        MoveF=null;
+        Sleep = null;
+        Interact=null;
+        if(Main.getPetSkin().equals("default")){
+            Main.setPetSkin("plant");
+        }
+        else if(Main.getPetSkin().equals("plant")){
+            Main.setPetSkin("winter");
+        }
+        else{
+            Main.setPetSkin("default");
+        }
+        System.out.println(Main.getPetSkin());
+        Main.getImageView().setImage(Main.getUi().getImage("Relax"));
+    }
+    /*
+        *注意由于美术资源还未加入，切换宠物功能暂时不能使用，因为懒得给biu和lxh的gif改名字
+     */
+    public void switchPet(){
+        Relax=null;
+        Sit=null;
+        Move=null;
+        MoveF=null;
+        Sleep = null;
+        Interact=null;
+        if(Main.getPetName().equals("002_amiya")){
+            //Main.setPetSkin(""); 等待加入美术资源
+        }
+        else if(Main.getPetName().equals("plant")){
+            //Main.setPetSkin(""); 等待加入美术资源
+        }
+        else{
+          //  Main.setPetSkin("");  等待加入美术资源
+        }
+        System.out.println(Main.getPetName());
+        Main.getImageView().setImage(Main.getUi().getImage("Relax"));
+    }
     public Image getImage(String behavior) {
         switch (behavior) {
             case "Relax":
