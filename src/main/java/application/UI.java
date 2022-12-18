@@ -241,6 +241,8 @@ public class UI implements Runnable {
      * 不默认开启是考虑到用户可能不想被打扰
      */
     public void setMsg(String msg) {
+        if (msg == null)
+            return;
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);
         messageBox.setVisible(true);
@@ -259,6 +261,8 @@ setMsg可能存在线程锁死的情况，我在某次运行时卡死并且报错在257行
 当然不排除我电脑跑不动的情况
  */
     public void setMsg(String msg, double time) {
+        if (msg == null)
+            return;
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(msg);
         messageBox.setVisible(true);
@@ -274,6 +278,8 @@ setMsg可能存在线程锁死的情况，我在某次运行时卡死并且报错在257行
     }
 
     public void setMsg(Dialog dialog) {
+        if (dialog == null)
+            return;
         Label lbl = (Label) messageBox.getChildren().get(0);
         lbl.setText(dialog.getDetail("simplifiedChinese"));
         messageBox.setVisible(true);

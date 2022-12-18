@@ -2,6 +2,8 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -30,10 +32,27 @@ public class HttpClient {
 //    }
 
     // HTTP GET请求
-    public static String sendGet(String str) throws Exception {
 
+    /**
+     * 解决了前置空格问题，对字符串为空和空格也进行了处理
+     * @param str
+     * @return
+     * @throws Exception
+     */
+    public static String sendGet(String str) throws Exception {
+        char[] chars = str.toCharArray();
+        int index = 0;
+        for (char c : chars) {
+            if (c != ' ') {
+                break;
+            }
+            index++;
+        }
+        str = str.substring(index);
+        if ("".equals(str))
+            return null;
 //        String url = "http://www.google.com/search?q=developer";
-        String url = "https://api.ownthink.com/bot?spoken="+str;
+        String url = "https://api.ownthink.com/bot?spoken=" + str;
 
         org.apache.http.client.HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
@@ -55,7 +74,7 @@ public class HttpClient {
         while ((line = rd.readLine()) != null) {
             result.append(line);
         }
-        JSONObject jsonObject=new JSONObject(result.toString());
+        JSONObject jsonObject = new JSONObject(result.toString());
 
 //        System.out.println(jsonObject.getJSONObject("data").getJSONObject("info").getString("text"));
         return jsonObject.getJSONObject("data").getJSONObject("info").getString("text");
