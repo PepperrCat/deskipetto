@@ -14,7 +14,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * the class that initial the stage
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-18 18:11:05
+ **/
 public class Main extends Application {
     private static ImageView imageView;
     EventListener listen;

@@ -1,21 +1,26 @@
 package application;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-
+/**
+ * the class that listens for mouse events
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-18 18:11:41
+ **/
 public class EventListener implements EventHandler<MouseEvent> {
     private ImageView imageView;
     private String behavior = "Relax";
     private static TimelinePool behaviorTimelinePool = new TimelinePool();
     private static TimelinePool msgTimelinePool = new TimelinePool();
+    private static TimelinePool menuBarTimelinePool = new TimelinePool();
 
     public EventListener(ImageView imgView) {
         imageView = imgView;
@@ -37,7 +42,12 @@ public class EventListener implements EventHandler<MouseEvent> {
                 loadImg(behavior);
             }
         } else {//右键事件
+            menuBarTimelinePool.stopAll();
             Main.getMenuBar().change();
+            // 添加了menu自动消失的时间线以及管理
+            Timeline tl = new Timeline(new KeyFrame(Duration.seconds(20), ae -> Main.getMenuBar().setInvisible()));
+            tl.play();
+            menuBarTimelinePool.addTimeLine(tl);
         }
     }
     // 下列方法是交互动作同时提高好感度

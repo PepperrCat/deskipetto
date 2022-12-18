@@ -1,15 +1,17 @@
 package application;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
+/**
+ * class that handles the pet's movement
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-18 18:09:38
+ **/
 public class Move extends Thread {
     private long time;
     private ImageView imageView;

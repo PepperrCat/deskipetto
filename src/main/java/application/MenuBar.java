@@ -11,10 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 
 import java.util.Objects;
@@ -246,5 +244,8 @@ public class MenuBar {
         if (flag) menuBox.setVisible(false);
         else menuBox.setVisible(true);
         flag = !flag;
+    }
+    public void setInvisible() {
+        menuBox.setVisible(false);
     }
 }
