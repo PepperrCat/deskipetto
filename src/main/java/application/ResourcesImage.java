@@ -11,7 +11,6 @@ public class ResourcesImage {
     private Image Interact;
     private Image Special;  // 好感度解锁后，在新皮肤里可以出现此动作
     private Image MoveF;
-
     public Image getSpecial() {
         if (Special == null)
             Special = new Image(ResourcesImage.class.getResource("/" + Main.getPetName() + "/" + Main.getPetSkin() + "/Special.gif").toExternalForm());

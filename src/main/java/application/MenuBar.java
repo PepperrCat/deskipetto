@@ -23,7 +23,7 @@ public class MenuBar {
     private ImageView imageView;
     private EventListener listen;
     private Stage primaryStage;
-    private AnchorPane pane;
+    private static AnchorPane pane;
     private boolean flag;
     private static VBox menuBox;
     /*
@@ -32,8 +32,8 @@ public class MenuBar {
      */
     public static void init(){
         Button b1 = new Button("Skin resurfacing");
-        Button b2 = new Button("Conversation");
-        Button b3 = new Button("Feeding");
+        Button b2 = new Button("Switch roles");
+        Button b3 = new Button("Play piano");
         Button b4 = new Button("Wait for the addition");
         Button b5 = new Button("Talk");
         TextInputDialog td = new TextInputDialog();
@@ -177,15 +177,16 @@ public class MenuBar {
             }
         });
         /*
-            *第三个功能：投喂食物
+            *第三个功能：弹钢琴
+            * 按ESC或者ENTER键退出，写个存留3秒的对话框（cyx目前不会对话框）
          */
         b3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("投喂食物");
+                System.out.println("弹钢琴");
                 Main.getMenuBar().change();
-
-//                Main.getUi().switchPet();
+                PianoFrame pianoFrame= PianoFrame.getInstance(getPane());
+                pianoFrame.start();
             }
         });
         /*
@@ -247,5 +248,8 @@ public class MenuBar {
     }
     public void setInvisible() {
         menuBox.setVisible(false);
+    }
+    public static AnchorPane getPane(){
+        return pane;
     }
 }
