@@ -60,10 +60,10 @@ public class Draw extends JFrame {
 //
 //    }
 
-    public static void main(String[] args) throws IOException {
-        getLoveBar(9, 200);
-
-    }
+//    public static void main(String[] args) throws IOException {
+//        getLoveBar(9, 200);
+//
+//    }
 
     /**
      * 使用此方法获取一个BufferedImage对象，该对象就是需要的进度条
@@ -73,14 +73,15 @@ public class Draw extends JFrame {
      * cap：进度上限
      */
 
-    public static void getLoveBar(int level, int cap) throws IOException {
+    public static BufferedImage getLoveBar(int level, int cap) throws IOException {
         BufferedImage small = loveAddNum(level);
 
 
         Graphics pen = targetImg.getGraphics();
         DrawFrame(sx + small.getWidth() / 2, sy, pen, level, cap);
         pen.drawImage(small, w * level / cap, h / 2 - small.getHeight() / 2, null);
-        ImageIO.write(targetImg, "png", new File("testBar.png"));
+        return targetImg;
+//        ImageIO.write(targetImg, "png", new File("testBar.png"));
     }
 
     public static BufferedImage loveAddNum(int level) throws IOException {

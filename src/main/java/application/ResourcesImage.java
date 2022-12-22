@@ -6,6 +6,7 @@ public class ResourcesImage {
     private Image Relax;
     private Image Sit;
     private Image Move;
+    private Image LoveBar;
     private Image Sleep;
     private Image Interact;
     private Image Special;  // 好感度解锁后，在新皮肤里可以出现此动作
