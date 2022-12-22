@@ -65,14 +65,14 @@ public class ResourcesImage {
         Interact = null;
         Special = null;
         if (Main.getPetSkin().equals("default")) {
-            Main.setPetSkin("plant");
-        } else if (Main.getPetSkin().equals("plant")) {
             Main.setPetSkin("winter");
+        } else if (Main.getPetSkin().equals("winter")) {
+            Main.setPetSkin("epoque");
         } else {
             Main.setPetSkin("default");
         }
         System.out.println(Main.getPetSkin());
-        Main.getImageView().setImage(Main.getUi().getImage("Relax"));
+        Main.getImageView().setImage(getImage("Relax"));
     }
 
     /*
@@ -87,14 +87,13 @@ public class ResourcesImage {
         Interact = null;
         Special = null;
         if (Main.getPetName().equals("002_amiya")) {
-            //Main.setPetSkin(""); 等待加入美术资源
-        } else if (Main.getPetName().equals("plant")) {
-            //Main.setPetSkin(""); 等待加入美术资源
+            Main.setPetName("102_texas");
         } else {
-            //  Main.setPetSkin("");  等待加入美术资源
+            Main.setPetName("002_amiya");
         }
+        Main.setPetSkin("default");
         System.out.println(Main.getPetName());
-        Main.getImageView().setImage(Main.getUi().getImage("Relax"));
+        Main.getImageView().setImage(getImage("Relax"));
     }
 
     /**
@@ -125,6 +124,9 @@ public class ResourcesImage {
             Move = null;
             MoveF = null;
             Sleep = null;
+            Interact = null;
+            Special = null;
+            Relax = null;
             return getImage(behavior);
         }
         return Relax;
