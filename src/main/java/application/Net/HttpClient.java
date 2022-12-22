@@ -1,4 +1,4 @@
-package application;
+package application.Net;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
