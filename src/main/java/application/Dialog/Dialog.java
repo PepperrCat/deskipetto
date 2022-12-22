@@ -1,4 +1,4 @@
-package application;
+package application.Dialog;
 
 import org.json.JSONObject;
 

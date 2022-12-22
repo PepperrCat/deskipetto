@@ -1,4 +1,4 @@
-package application;
+package application.Dialog;
 
 public class LanguageMap {
     private String simplifiedChinese;

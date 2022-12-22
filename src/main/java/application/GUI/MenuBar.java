@@ -1,5 +1,7 @@
-package application;
+package application.GUI;
 
+import application.Listener.EventListener;
+import application.Net.HttpClient;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

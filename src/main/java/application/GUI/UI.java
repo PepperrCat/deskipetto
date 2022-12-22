@@ -1,4 +1,4 @@
-package application;
+package application.GUI;
 
 import java.awt.AWTException;
 import java.awt.CheckboxMenuItem;
@@ -14,23 +14,24 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import application.Dialog.Dialog;
+import application.Dialog.DialogAnalysis;
+import application.Listener.Desuki;
+import application.Listener.EventListener;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 

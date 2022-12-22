@@ -1,5 +1,6 @@
-package application;
+package application.GUI;
 
+import application.Listener.EventListener;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
