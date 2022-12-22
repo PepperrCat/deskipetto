@@ -8,10 +8,12 @@ import java.util.Arrays;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
 
 public class HttpClient {
 
+    static org.apache.http.client.HttpClient client = HttpClientBuilder.create().build();
     private static final String USER_AGENT = "Mozilla/5.0";
 
 //    public static void main(String[] args) throws Exception {
@@ -54,7 +56,7 @@ public class HttpClient {
 //        String url = "http://www.google.com/search?q=developer";
         String url = "https://api.ownthink.com/bot?spoken=" + str;
 
-        org.apache.http.client.HttpClient client = new DefaultHttpClient();
+
         HttpGet request = new HttpGet(url);
 
         //添加请求头
