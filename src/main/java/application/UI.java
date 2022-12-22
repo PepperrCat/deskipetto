@@ -8,8 +8,7 @@ import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.Random;
 
@@ -167,6 +166,17 @@ public class UI implements Runnable {
     void end() {
         double time = 3;
         Platform.runLater(() -> setMsg("博士，还会再见嘛T.T", time));
+        try {
+            File file=new File("love");
+            if (!file.exists())file.createNewFile();
+            FileOutputStream fileOut = new FileOutputStream(file);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(Desuki.getInstance());
+            out.close();
+            fileOut.close();
+        } catch (Exception e) {
+
+        }
         //动画结束后执行退出
         new Timeline(new KeyFrame(
                 Duration.seconds(time),

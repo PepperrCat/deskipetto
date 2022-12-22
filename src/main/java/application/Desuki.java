@@ -1,12 +1,14 @@
 package application;
 
+import java.io.*;
+
 /**
  * @projectName: oopDZY
  * @package: application
  * @className: Desuki
  * @date: 2022/12/12 17:30
  */
-public class Desuki {
+public class Desuki implements Serializable {
     private int likeGrade = 0;
     private static Desuki INSTANCE = null;
 
@@ -17,7 +19,21 @@ public class Desuki {
 
     public static Desuki getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Desuki();
+            try {
+                File file=new File("love");
+                if (file.exists()){
+                    FileInputStream fileIn = new FileInputStream(file);
+                    ObjectInputStream in = new ObjectInputStream(fileIn);
+                    INSTANCE= (Desuki) in.readObject();
+                    in.close();
+                    fileIn.close();
+                }
+                   else INSTANCE = new Desuki();
+            } catch (Exception e) {
+
+            }
+
+
         }
         return INSTANCE;
 
