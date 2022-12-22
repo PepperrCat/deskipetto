@@ -173,7 +173,7 @@ public class MenuBar {
             public void handle(ActionEvent actionEvent) {
                 System.out.println("切换人物");
                 Main.getMenuBar().change();
-                Main.getUi().newSwitchPet(); // 加入美术资源后此条命令可以使用
+                Main.getUi().switchPet(); // 加入美术资源后此条命令可以使用
             }
         });
         /*
