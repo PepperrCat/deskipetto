@@ -17,7 +17,7 @@ public class Dialog {
     public Dialog(String title, String voiceFilename, JSONObject detail) {
         this.title = title;
         this.voiceFilename = voiceFilename;
-        createLanguageMap(detail.getString("中文"), detail.getString("日文"), detail.getString("英文"), detail.getString("韩文"), detail.getString("中文(繁体)"));
+        createLanguageMap(detail.getString("涓枃"), detail.getString("鏃ユ枃"), detail.getString("鑻辨枃"), detail.getString("闊╂枃"), detail.getString("涓枃(绻佷綋)"));
     }
 
     private void createLanguageMap(String simplifiedChinese, String japanese, String english, String korean, String traditionalChinese) {

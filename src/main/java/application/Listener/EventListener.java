@@ -37,21 +37,19 @@ public class EventListener implements EventHandler<MouseEvent> {
             } else if ("Relax".equals(getBehavior())) {
                 double x = e.getX();
                 double y = e.getY();
-//        System.out.println(x + " " + y);//测试眼睛等部位的位置
-                //选择动作
+
                 String behavior = Behavior(x, y);
                 loadImg(behavior);
             }
-        } else {//右键事件
+        } else {
             menuBarTimelinePool.stopAll();
             Main.getMenuBar().change();
-            // 添加了menu自动消失的时间线以及管理
+
             Timeline tl = new Timeline(new KeyFrame(Duration.seconds(20), ae -> Main.getMenuBar().setInvisible()));
             tl.play();
             menuBarTimelinePool.addTimeLine(tl);
         }
     }
-    // 下列方法是交互动作同时提高好感度
     private String Behavior(double x, double y) {
         Desuki desuki = Desuki.getInstance();
         if (x > 370 && x < 420 && y > 170 && y < 200) {
@@ -66,7 +64,7 @@ public class EventListener implements EventHandler<MouseEvent> {
         return "Interact";
     }
 
-    //点击部位后加载图片
+
     public void loadImg(String behavior) {
         setBehavior(behavior);
         if (!"Relax".equals(getBehavior())) {
@@ -82,7 +80,7 @@ public class EventListener implements EventHandler<MouseEvent> {
                                 Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
-                            Platform.runLater(() -> Main.getUi().setMsg("嗯哼~嗯哼~", 5));
+                            Platform.runLater(() -> Main.getUi().setMsg("鍡摷~鍡摷~", 5));
                             break;
                         case "Sleep":
                             Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
@@ -111,7 +109,7 @@ public class EventListener implements EventHandler<MouseEvent> {
                             Platform.runLater(() -> Main.getUi().setMsg(Main.getUi().getDialogAnalysis().getDialog(34)));
                             break;
                         case "Sit":
-                            Platform.runLater(() -> Main.getUi().setMsg("嗯哼~嗯哼~", 5));
+                            Platform.runLater(() -> Main.getUi().setMsg("锟脚猴拷~锟脚猴拷~", 5));
                             break;
                         case "Sleep":
                             Platform.runLater(() -> Main.getUi().setMsg("zzz", 5));
@@ -128,7 +126,7 @@ public class EventListener implements EventHandler<MouseEvent> {
         }
     }
 
-    //主图，负责等待时和退出时的动作
+
     public void mainImg() {
         setBehavior("Relax");
         Task<Void> task = new Task<>() {

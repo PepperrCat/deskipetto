@@ -33,11 +33,7 @@ public class Main extends Application {
 
     public void start(Stage Stage) {
         try {
-            /*
-             * ´´½¨³õÊ¼µÄÍ¼
-             * ¼ÓÔØÏà¶ÔÂ·¾¶µÄÍ¼Æ¬ÒªÓÃclass.getResource£¬²»È»ÔËĞĞjar°üÊ±»á±¨´í£ºÕÒ²»µ½ÎÄ¼şÂ·¾¶£¡
-             * Â·¾¶ÖĞµÚÒ»¸ö¡°/¡±ÊÇ±ØĞèµÄ£¬Ëü±íÊ¾ÀàµÄ¸ùÄ¿Â¼£¬ÀàÎÄ¼ş¼ĞÔÚ´ËÏîÄ¿ÖĞÓëlxhºÍbiuÔÚÍ¬Ò»¼¶
-             */
+
             primaryStage = new Stage();
 
             imageView = new ImageView();
@@ -45,25 +41,25 @@ public class Main extends Application {
             imageView.setY(0);
             imageView.setLayoutX(-300);
             imageView.setLayoutY(-100);
-            //ÉèÖÃÍ¼Æ¬ÏÔÊ¾µÄ´óĞ¡
+
 //	      	imageView.setFitHeight(1000);
             imageView.setFitWidth(800);
-            //Ìí¼ÓÍ¼Æ¬µÄµã»÷ÊÂ¼ş
+
             listen = new EventListener(imageView);
             imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, listen);
 
-            imageView.setPreserveRatio(true); //±£Áô width£ºheightµÄ±ÈÀı
-            imageView.setStyle("-fx-background:transparent;");//ÈİÆ÷±³¾°ÉèÎªÍ¸Ã÷
+            imageView.setPreserveRatio(true);
+            imageView.setStyle("-fx-background:transparent;");
 
             ui = new UI(imageView, listen, primaryStage);
-            ui.addMessageBox("²©Ê¿£¬»¶Ó­»ØÀ´!");
+            ui.addMessageBox("åšå£«ï¼Œæ¬¢è¿å›æ¥!");
             ui.setMsg(ui.getDialogAnalysis().getDialog(42));
             imageView.setImage(ui.getImage("Relax"));
 
             AnchorPane pane = new AnchorPane(ui.getMessageBox(), ui.getImageView());
             menuBar = new MenuBar(imageView, listen, pane);
             pane.setStyle("-fx-background:transparent;");
-            //Ê¹´°ÌåÄÜÍÏ¶¯¡£ÏÈ»ñÈ¡°´ÏÂÊó±êÊ±µÄ×ø±êp1£¬ÔÙ½«´°Ìå×ø±êÉèÎªp1¼ÓÍÏ¶¯µÄÎ»ÒÆÁ¿
+
             pane.setOnMousePressed(event -> {
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
@@ -81,26 +77,26 @@ public class Main extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/application.css")).toExternalForm());
 
             primaryStage.setScene(scene);
-            //ÉèÖÃ´°ÌåµÄ³õÊ¼Î»ÖÃ
+            //è®¾ç½®çª—ä½“çš„åˆå§‹ä½ç½®
             primaryStage.setX(Screen.getPrimary().getVisualBounds().getMinX());
 
             primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 200);
-            primaryStage.setAlwaysOnTop(true);//´°¿Ú×ÜÏÔÊ¾ÔÚ×îÇ°
-            //ĞŞ¸ÄÈÎÎñÀ¸Í¼±ê
+            primaryStage.setAlwaysOnTop(true);//çª—å£æ€»æ˜¾ç¤ºåœ¨æœ€å‰
+            //ä¿®æ”¹ä»»åŠ¡æ å›¾æ ‡
             primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/icon.png"))));
 
             primaryStage.initStyle(StageStyle.UTILITY);
-            primaryStage.initStyle(StageStyle.TRANSPARENT);//±³¾°Í¸Ã÷
+            primaryStage.initStyle(StageStyle.TRANSPARENT);//èƒŒæ™¯é€æ˜
             /*
-             * µã»÷ÈÎÎñÀ¸µÄ¡°¹Ø±Õ´°¿Ú¡±Ê±£¬²¥·Å¸æ±ğ¶¯»­£¬Í¬Ê±Ê¹ÍĞÅÌµÄÍ¼±êÒ²¹Ø±Õ.
-             * event.consume()ÊÇ±ØĞèµÄ£¬ÕâÑù²ÅÄÜÕæÕı×èÖ¹Window CloseÊÂ¼şµÄÄ¬ÈÏ´¦Àí¡£
-             * Èç¹û½ö½öÊ¹ÓÃSystem.exit(0);Ôò²»ĞèÒªevent.consume();
+             * ç‚¹å‡»ä»»åŠ¡æ çš„â€œå…³é—­çª—å£â€æ—¶ï¼Œæ’­æ”¾å‘Šåˆ«åŠ¨ç”»ï¼ŒåŒæ—¶ä½¿æ‰˜ç›˜çš„å›¾æ ‡ä¹Ÿå…³é—­.
+             * event.consume()æ˜¯å¿…éœ€çš„ï¼Œè¿™æ ·æ‰èƒ½çœŸæ­£é˜»æ­¢Window Closeäº‹ä»¶çš„é»˜è®¤å¤„ç†ã€‚
+             * å¦‚æœä»…ä»…ä½¿ç”¨System.exit(0);åˆ™ä¸éœ€è¦event.consume();
              */
 //			primaryStage.setOnCloseRequest( event ->{event.consume(); ui.end();});
             removeTaskbar(primaryStage);
             primaryStage.show();
 
-            ui.setTray(primaryStage);//Ìí¼ÓÏµÍ³ÍĞÅÌ
+            ui.setTray(primaryStage);//æ·»åŠ ç³»ç»Ÿæ‰˜ç›˜
             Thread thread = new Thread(ui);
             thread.start();
         } catch (Exception e) {

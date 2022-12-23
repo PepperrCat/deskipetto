@@ -34,11 +34,7 @@ public class Move extends Thread {
     }
 
     public void run() {
-        //µã»÷¾ÍÍ£ÏÂ
-        /*Ê¹ÓÃlisten.petID¶ø²»ÊÇ¶¨ÒåÒ»¸ö±äÁ¿int petID = listen.petID;
-         *ÊÇÒòÎªÔÚÔË¶¯¹ı³ÌÖĞµã»÷¡°ÇĞ»»³èÎï¡±Ê±Êµ¼ÊµÄpetID»á¸Ä±ä£¬ËùÒÔÊ¹ÓÃlisten.petID¾Í¿ÉÒÔ×öµ½Í¬²½¸Ä±ä¡£
-         *ÈôÏÂÃæÊ¹ÓÃlisten.mainimg(petID,0)ÏÔÊ¾µÄ¾ÍÊÇµã»÷¡°ÇĞ»»³èÎï¡±Ç°µÄ³èÎï£¬Õâ¸öpetID¾ÍÊÇ¾ÉµÄpetID¡£
-         */
+
         imageView.addEventHandler(MouseEvent.MOUSE_PRESSED,
                 e -> {
                     exit = true;
@@ -46,7 +42,7 @@ public class Move extends Thread {
                     Main.getUi().getMessageBox().setVisible(false);
                 });
         while (!exit) {
-            //Èç¹ûpetID!=listen.petID£¬ÔòÒÑ¡°ÇĞ»»³èÎï¡±£¬´ËÊ±Òª½áÊøÔË¶¯¡£
+
             if (!"Move".equals(listen.getBehavior()))
                 break;
             width = imageView.getBoundsInLocal().getMaxX() - 600;
@@ -62,9 +58,9 @@ public class Move extends Thread {
                 listen.mainImg();
                 return;
             }
-            if (direID == 0) {    //Ïò×ó×ß
+            if (direID == 0) {    //å‘å·¦èµ°
                 stage.setX(x - speed);
-            } else if (direID == 1) {    //ÏòÓÒ×ß
+            } else if (direID == 1) {    //å‘å³èµ°
                 stage.setX(x + speed);
             }
             time -= 1;

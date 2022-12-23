@@ -15,7 +15,7 @@ public class ResourcesImage {
     private Image LoveBar;
     private Image Sleep;
     private Image Interact;
-    private Image Special;  // ºÃ¸Ğ¶È½âËøºó£¬ÔÚĞÂÆ¤·ôÀï¿ÉÒÔ³öÏÖ´Ë¶¯×÷
+    private Image Special;  // å¥½æ„Ÿåº¦è§£é”åï¼Œåœ¨æ–°çš®è‚¤é‡Œå¯ä»¥å‡ºç°æ­¤åŠ¨ä½œ
     private Image MoveF;
     public Image getSpecial() {
         if (Special == null)
@@ -81,7 +81,7 @@ public class ResourcesImage {
     }
 
     /*
-     *×¢ÒâÓÉÓÚÃÀÊõ×ÊÔ´»¹Î´¼ÓÈë£¬ÇĞ»»³èÎï¹¦ÄÜÔİÊ±²»ÄÜÊ¹ÓÃ£¬ÒòÎªÀÁµÃ¸øbiuºÍlxhµÄgif¸ÄÃû×Ö
+     *æ³¨æ„ç”±äºç¾æœ¯èµ„æºè¿˜æœªåŠ å…¥ï¼Œåˆ‡æ¢å® ç‰©åŠŸèƒ½æš‚æ—¶ä¸èƒ½ä½¿ç”¨ï¼Œå› ä¸ºæ‡’å¾—ç»™biuå’Œlxhçš„gifæ”¹åå­—
      */
     public void switchPet() {
         Relax = null;
@@ -102,7 +102,7 @@ public class ResourcesImage {
     }
 
     /**
-     * catch¶ÑÒç³ö´íÎó£¬½«³ıRelaxºÍInteractÒÔÍâµÄÍ¼Æ¬×ÊÔ´È«²¿ÊÍ·Åµô
+     * catchå †æº¢å‡ºé”™è¯¯ï¼Œå°†é™¤Relaxå’ŒInteractä»¥å¤–çš„å›¾ç‰‡èµ„æºå…¨éƒ¨é‡Šæ”¾æ‰
      * @param behavior
      * @return
      */
@@ -132,7 +132,7 @@ public class ResourcesImage {
             Interact = null;
             Special = null;
             Relax = null;
-            System.gc();    // ²»Ò»¶¨ÕæµÄÔËĞĞ£¬µ«»¹ÊÇĞ´ÁË±£Ö¤ÖÁÉÙ¿ªÊ¼»ØÊÕ
+            System.gc();    // ä¸ä¸€å®šçœŸçš„è¿è¡Œï¼Œä½†è¿˜æ˜¯å†™äº†ä¿è¯è‡³å°‘å¼€å§‹å›æ”¶
             return getImage("Relax");
         }
         return Relax;

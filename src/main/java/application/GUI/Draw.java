@@ -11,9 +11,9 @@ import java.io.*;
  * @package: application
  * @className: Draw
  * @date: 2022/12/17 12:17
- * µ÷ÓÃgetLoveBar(int level, int cap) ·½·¨×ã¹»ÁË¡£
+ * è°ƒç”¨getLoveBar(int level, int cap) æ–¹æ³•è¶³å¤Ÿäº†ã€‚
  *
- * Ê¹ÓÃ´Ë·½·¨»ñÈ¡Ò»¸öBufferedImage¶ÔÏó£¬¸Ã¶ÔÏó¾ÍÊÇĞèÒªµÄ½ø¶ÈÌõ
+ * ä½¿ç”¨æ­¤æ–¹æ³•è·å–ä¸€ä¸ªBufferedImageå¯¹è±¡ï¼Œè¯¥å¯¹è±¡å°±æ˜¯éœ€è¦çš„è¿›åº¦æ¡
  */
 public class Draw extends JFrame {
     private static final int sx = 0;//
@@ -73,11 +73,11 @@ public class Draw extends JFrame {
 //       }
 //    }
     /**
-     * Ê¹ÓÃ´Ë·½·¨»ñÈ¡Ò»¸öBufferedImage¶ÔÏó£¬¸Ã¶ÔÏó¾ÍÊÇĞèÒªµÄ½ø¶ÈÌõ
+     * ä½¿ç”¨æ­¤æ–¹æ³•è·å–ä¸€ä¸ªBufferedImageå¯¹è±¡ï¼Œè¯¥å¯¹è±¡å°±æ˜¯éœ€è¦çš„è¿›åº¦æ¡
      * <p>
-     * level£ºµ±Ç°½ø¶È
+     * levelï¼šå½“å‰è¿›åº¦
      * <p>
-     * cap£º½ø¶ÈÉÏÏŞ
+     * capï¼šè¿›åº¦ä¸Šé™
      */
 
     public static javafx.scene.image.Image getLoveBar(int level, int cap) throws Exception {
@@ -140,7 +140,7 @@ public class Draw extends JFrame {
 
     public static BufferedImage zoomByScale(BufferedImage img, double scale) throws IOException {
         if (small != null) return small;
-        //Óë°´±ÈÀıËõ·ÅµÄ²»Í¬Ö»ÔÚÓÚ,²»ĞèÒª»ñÈ¡ĞÂµÄ³¤ºÍ¿í,ÆäÓàÏàÍ¬.
+        //ä¸æŒ‰æ¯”ä¾‹ç¼©æ”¾çš„ä¸åŒåªåœ¨äº,ä¸éœ€è¦è·å–æ–°çš„é•¿å’Œå®½,å…¶ä½™ç›¸åŒ.
         int width = (int) (img.getWidth() * scale);
         int height = (int) (img.getHeight() * scale);
         Image _img = img.getScaledInstance(width, height, Image.SCALE_DEFAULT);
