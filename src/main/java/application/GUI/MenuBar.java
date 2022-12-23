@@ -84,8 +84,8 @@ public class MenuBar {
         Image Image5 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/chat_button.png")));
         Image Image7 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/chat_button.png")));
-        ImageView b7Image = new ImageView(Image4);
+                "/hearts_button.png")));
+        ImageView b7Image = new ImageView(Image7);
         ImageView b5Image = new ImageView(Image5);
         b1Image.setFitWidth(20);
         b1Image.setFitHeight(20);
@@ -111,7 +111,7 @@ public class MenuBar {
         b4.setGraphic(b4Image);
         b5.setGraphic(b5Image);
         b6.setGraphic(b6Image);
-        b7.setGraphic(b6Image);
+        b7.setGraphic(b7Image);
         DropShadow shadow = new DropShadow();
         b1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
             @Override
