@@ -77,12 +77,12 @@ public class UI implements Runnable {
             PopupMenu popMenu = new PopupMenu();
             popMenu.setFont(new Font("Microsoft YaHei", Font.PLAIN, 18));
 
-            itemSwitch = new MenuItem("切换宠物");
+            itemSwitch = new MenuItem("switch");
             itemSwitch.addActionListener(e -> switchPet());
 
-            itemWalkable = new CheckboxMenuItem("自行走动");
-            autoPlay = new CheckboxMenuItem("自娱自乐");
-            itemSay = new CheckboxMenuItem("碎碎念");
+            itemWalkable = new CheckboxMenuItem("walk");
+            autoPlay = new CheckboxMenuItem("play");
+            itemSay = new CheckboxMenuItem("dialog");
             //令"自行走动"、"自娱自乐"和"碎碎念"不能同时生效
             itemWalkable.addItemListener(il -> {
                 if (itemWalkable.getState()) {
@@ -106,10 +106,10 @@ public class UI implements Runnable {
 
             });
 
-            MenuItem itemShow = new MenuItem("显示");
+            MenuItem itemShow = new MenuItem("appear");
             itemShow.addActionListener(e -> Platform.runLater(() -> stage.show()));
 
-            MenuItem itemHide = new MenuItem("隐藏");
+            MenuItem itemHide = new MenuItem("hide");
             //要先setImplicitExit(false)，否则stage.hide()会直接关闭stage
             //stage.hide()等同于stage.close()
             itemHide.addActionListener(e -> {
@@ -117,7 +117,7 @@ public class UI implements Runnable {
                 Platform.runLater(() -> stage.hide());
             });
 
-            MenuItem itemExit = new MenuItem("退出");
+            MenuItem itemExit = new MenuItem("exit");
 //            itemExit.setFont(new Font("黑体",Font.PLAIN,16));
             itemExit.addActionListener(e -> end());
 
