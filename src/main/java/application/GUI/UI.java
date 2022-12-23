@@ -68,22 +68,22 @@ public class UI implements Runnable {
         }
     }
 
-    //Ìí¼ÓÏµÍ³ÍÐÅÌ
+    //æ·»åŠ ç³»ç»Ÿæ‰˜ç›˜
     public void setTray(Stage stage) {
         SystemTray tray = SystemTray.getSystemTray();
-        BufferedImage image;//ÍÐÅÌÍ¼±ê
+        BufferedImage image;//æ‰˜ç›˜å›¾æ ‡
         try {
-            // ÎªÍÐÅÌÌí¼ÓÒ»¸öÓÒ¼üµ¯³ö²Ëµ¥
+            // ä¸ºæ‰˜ç›˜æ·»åŠ ä¸€ä¸ªå³é”®å¼¹å‡ºèœå•
             PopupMenu popMenu = new PopupMenu();
             popMenu.setFont(new Font("Microsoft YaHei", Font.PLAIN, 18));
 
-            itemSwitch = new MenuItem("ÇÐ»»³èÎï");
+            itemSwitch = new MenuItem("åˆ‡æ¢å® ç‰©");
             itemSwitch.addActionListener(e -> switchPet());
 
-            itemWalkable = new CheckboxMenuItem("×ÔÐÐ×ß¶¯");
-            autoPlay = new CheckboxMenuItem("×ÔÓé×ÔÀÖ");
-            itemSay = new CheckboxMenuItem("ËéËéÄî");
-            //Áî"×ÔÐÐ×ß¶¯"¡¢"×ÔÓé×ÔÀÖ"ºÍ"ËéËéÄî"²»ÄÜÍ¬Ê±ÉúÐ§
+            itemWalkable = new CheckboxMenuItem("è‡ªè¡Œèµ°åŠ¨");
+            autoPlay = new CheckboxMenuItem("è‡ªå¨±è‡ªä¹");
+            itemSay = new CheckboxMenuItem("ç¢Žç¢Žå¿µ");
+            //ä»¤"è‡ªè¡Œèµ°åŠ¨"ã€"è‡ªå¨±è‡ªä¹"å’Œ"ç¢Žç¢Žå¿µ"ä¸èƒ½åŒæ—¶ç”Ÿæ•ˆ
             itemWalkable.addItemListener(il -> {
                 if (itemWalkable.getState()) {
                     autoPlay.setState(false);
@@ -106,19 +106,19 @@ public class UI implements Runnable {
 
             });
 
-            MenuItem itemShow = new MenuItem("ÏÔÊ¾");
+            MenuItem itemShow = new MenuItem("æ˜¾ç¤º");
             itemShow.addActionListener(e -> Platform.runLater(() -> stage.show()));
 
-            MenuItem itemHide = new MenuItem("Òþ²Ø");
-            //ÒªÏÈsetImplicitExit(false)£¬·ñÔòstage.hide()»áÖ±½Ó¹Ø±Õstage
-            //stage.hide()µÈÍ¬ÓÚstage.close()
+            MenuItem itemHide = new MenuItem("éšè—");
+            //è¦å…ˆsetImplicitExit(false)ï¼Œå¦åˆ™stage.hide()ä¼šç›´æŽ¥å…³é—­stage
+            //stage.hide()ç­‰åŒäºŽstage.close()
             itemHide.addActionListener(e -> {
                 Platform.setImplicitExit(false);
                 Platform.runLater(() -> stage.hide());
             });
 
-            MenuItem itemExit = new MenuItem("ÍË³ö");
-//            itemExit.setFont(new Font("ºÚÌå",Font.PLAIN,16));
+            MenuItem itemExit = new MenuItem("é€€å‡º");
+//            itemExit.setFont(new Font("é»‘ä½“",Font.PLAIN,16));
             itemExit.addActionListener(e -> end());
 
             popMenu.add(itemSwitch);
@@ -130,39 +130,39 @@ public class UI implements Runnable {
             popMenu.add(itemShow);
             popMenu.add(itemHide);
             popMenu.add(itemExit);
-            //ÉèÖÃÍÐÅÌÍ¼±ê
+            //è®¾ç½®æ‰˜ç›˜å›¾æ ‡
             image = ImageIO.read(getClass().getResourceAsStream("/icon.png"));
-            TrayIcon trayIcon = new TrayIcon(image, "×ÀÃæ³èÎï", popMenu);
-            trayIcon.setToolTip("×ÀÃæ³èÎï");
-            trayIcon.setImageAutoSize(true);//×Ô¶¯µ÷ÕûÍ¼Æ¬´óÐ¡¡£Õâ²½ºÜÖØÒª£¬²»È»ÏÔÊ¾µÄÊÇ¿Õ°×
+            TrayIcon trayIcon = new TrayIcon(image, "æ¡Œé¢å® ç‰©", popMenu);
+            trayIcon.setToolTip("æ¡Œé¢å® ç‰©");
+            trayIcon.setImageAutoSize(true);//è‡ªåŠ¨è°ƒæ•´å›¾ç‰‡å¤§å°ã€‚è¿™æ­¥å¾ˆé‡è¦ï¼Œä¸ç„¶æ˜¾ç¤ºçš„æ˜¯ç©ºç™½
             tray.add(trayIcon);
         } catch (IOException | AWTException e) {
             e.printStackTrace();
         }
     }
 
-    //ÇÐ»»³èÎï
+    //åˆ‡æ¢å® ç‰©
 
     /*
-        *³¢ÊÔÐ´²Ëµ¥À¸µÚÒ»¸ö¹¦ÄÜ£ºÇÐ»»Æ¤·ô£¬²»¸Ä±äÈËÎï£¬Ö»¸Ä±ä×Å×°
-        *¿ÉÄÜ²úÉúµÄbug£¬Èç¹û´ËÊ±×À³èÓÐ¶¯×÷£¬»áÓëÖ®²úÉú³åÍ»
+        *å°è¯•å†™èœå•æ ç¬¬ä¸€ä¸ªåŠŸèƒ½ï¼šåˆ‡æ¢çš®è‚¤ï¼Œä¸æ”¹å˜äººç‰©ï¼Œåªæ”¹å˜ç€è£…
+        *å¯èƒ½äº§ç”Ÿçš„bugï¼Œå¦‚æžœæ­¤æ—¶æ¡Œå® æœ‰åŠ¨ä½œï¼Œä¼šä¸Žä¹‹äº§ç”Ÿå†²çª
      */
     public void switchSkin(){
-        System.out.println("³¢ÊÔÇÐ»»Æ¤·ô");
+        System.out.println("å°è¯•åˆ‡æ¢çš®è‚¤");
         setMsg("");
         resourcesImage.switchSkin();
     }
     /*
-        *²Ëµ¥À¸µÚ¶þ¸ö¹¦ÄÜ£¬ÇÐ»»ÈËÎï£¬ÓëµÚÒ»¸öÀàËÆ
+        *èœå•æ ç¬¬äºŒä¸ªåŠŸèƒ½ï¼Œåˆ‡æ¢äººç‰©ï¼Œä¸Žç¬¬ä¸€ä¸ªç±»ä¼¼
      */
     public void switchPet(){
         setMsg("");
         resourcesImage.switchPet();
     }
-    //ÍË³ö³ÌÐòÊ±Õ¹Ê¾¶¯»­
+    //é€€å‡ºç¨‹åºæ—¶å±•ç¤ºåŠ¨ç”»
     void end() {
         double time = 3;
-        Platform.runLater(() -> setMsg("²©Ê¿£¬»¹»áÔÙ¼ûÂïT.T", time));
+        Platform.runLater(() -> setMsg("åšå£«ï¼Œè¿˜ä¼šå†è§å˜›T.T", time));
         try {
             File file=new File("love");
             if (!file.exists())file.createNewFile();
@@ -174,38 +174,38 @@ public class UI implements Runnable {
         } catch (Exception e) {
 
         }
-        //¶¯»­½áÊøºóÖ´ÐÐÍË³ö
+        //åŠ¨ç”»ç»“æŸåŽæ‰§è¡Œé€€å‡º
         new Timeline(new KeyFrame(
                 Duration.seconds(time),
                 ae -> System.exit(0)))
                 .play();
     }
 
-    //Ìí¼ÓÁÄÌìÆøÅÝ
+    //æ·»åŠ èŠå¤©æ°”æ³¡
     public void addMessageBox(String message) {
         Label bubble = new Label(message);
-        //ÉèÖÃÆøÅÝµÄ¿í¶È¡£Èç¹ûÃ»ÓÐÕâ¾ä£¬¾Í»á¸ù¾ÝÄÚÈÝ¶àÉÙÀ´×ÔÊÊÓ¦¿í¶È
+        //è®¾ç½®æ°”æ³¡çš„å®½åº¦ã€‚å¦‚æžœæ²¡æœ‰è¿™å¥ï¼Œå°±ä¼šæ ¹æ®å†…å®¹å¤šå°‘æ¥è‡ªé€‚åº”å®½åº¦
         bubble.setPrefWidth(150);
-        bubble.setWrapText(true);//×Ô¶¯»»ÐÐ
+        bubble.setWrapText(true);//è‡ªåŠ¨æ¢è¡Œ
         bubble.setStyle("-fx-background-color: DarkTurquoise; -fx-background-radius: 8px;");
-        bubble.setPadding(new Insets(7));//±êÇ©µÄÄÚ±ß¾àµÄ¿í¶È
+        bubble.setPadding(new Insets(7));//æ ‡ç­¾çš„å†…è¾¹è·çš„å®½åº¦
         bubble.setFont(new javafx.scene.text.Font(14));
         Polygon triangle = new Polygon(
                 0.0, 0.0,
                 8.0, 10.0,
-                16.0, 0.0);//·Ö±ðÉèÖÃÈý½ÇÐÎÈý¸ö¶¥µãµÄXºÍY
+                16.0, 0.0);//åˆ†åˆ«è®¾ç½®ä¸‰è§’å½¢ä¸‰ä¸ªé¡¶ç‚¹çš„Xå’ŒY
         triangle.setFill(Color.DARKTURQUOISE);
         messageBox = new VBox();
-//      VBox.setMargin(triangle, new Insets(0, 50, 0, 0));//ÉèÖÃÈý½ÇÐÎµÄÎ»ÖÃ£¬Ä¬ÈÏ¾ÓÖÐ
+//      VBox.setMargin(triangle, new Insets(0, 50, 0, 0));//è®¾ç½®ä¸‰è§’å½¢çš„ä½ç½®ï¼Œé»˜è®¤å±…ä¸­
         messageBox.getChildren().addAll(bubble, triangle);
         messageBox.setAlignment(Pos.BOTTOM_CENTER);
         messageBox.setStyle("-fx-background:transparent;");
-        //ÉèÖÃÏà¶ÔÓÚ¸¸ÈÝÆ÷µÄÎ»ÖÃ
+        //è®¾ç½®ç›¸å¯¹äºŽçˆ¶å®¹å™¨çš„ä½ç½®
         messageBox.setLayoutX(50);
         messageBox.setLayoutY(0);
     }
 
-    //ÓÃ¶àÏß³ÌÀ´ÊµÏÖ ¾­¹ýËæ»úÊ±¼ä¼ä¸ôÖ´ÐÐ¡°×Ô¶¯ÐÐ×ß¡±¡°×ÔÓé×ÔÀÖ¡±¡°ËéËéÄî¡±µÄ¹¦ÄÜ
+    //ç”¨å¤šçº¿ç¨‹æ¥å®žçŽ° ç»è¿‡éšæœºæ—¶é—´é—´éš”æ‰§è¡Œâ€œè‡ªåŠ¨è¡Œèµ°â€â€œè‡ªå¨±è‡ªä¹â€â€œç¢Žç¢Žå¿µâ€çš„åŠŸèƒ½
     public void run() {
         try {
             Thread.sleep(10000);
@@ -214,7 +214,7 @@ public class UI implements Runnable {
         }
         while (true) {
             Random rand = new Random();
-//            Ëæ»ú·¢Éú×Ô¶¯ÊÂ¼þ
+//            éšæœºå‘ç”Ÿè‡ªåŠ¨äº‹ä»¶
             long time = (rand.nextInt(10) + 30) * 1000;
 //            long time = 5000;
             int op = rand.nextInt(3);
@@ -244,8 +244,8 @@ public class UI implements Runnable {
     }
 
     /*
-     * Ö´ÐÐ"ËéËéÄî"µÄ¹¦ÄÜ¡ª¡ªÔÚ³èÎïÉÏ·½ÏÔÊ¾¶Ô»°ÆøÅÝ
-     * ²»Ä¬ÈÏ¿ªÆôÊÇ¿¼ÂÇµ½ÓÃ»§¿ÉÄÜ²»Ïë±»´òÈÅ
+     * æ‰§è¡Œ"ç¢Žç¢Žå¿µ"çš„åŠŸèƒ½â€”â€”åœ¨å® ç‰©ä¸Šæ–¹æ˜¾ç¤ºå¯¹è¯æ°”æ³¡
+     * ä¸é»˜è®¤å¼€å¯æ˜¯è€ƒè™‘åˆ°ç”¨æˆ·å¯èƒ½ä¸æƒ³è¢«æ‰“æ‰°
      */
     public void setMsg(String msg) {
         if (msg == null || msg.length() == 0) {
@@ -257,7 +257,7 @@ public class UI implements Runnable {
         lbl.setText(msg);
         messageBox.setVisible(true);
         EventListener.getMsgTimelinePool().stopAll();
-        //ÉèÖÃÆøÅÝµÄÏÔÊ¾Ê±¼ä
+        //è®¾ç½®æ°”æ³¡çš„æ˜¾ç¤ºæ—¶é—´
         Timeline tl = new Timeline(new KeyFrame(
                 Duration.seconds(3),
                 ae -> {
@@ -267,8 +267,8 @@ public class UI implements Runnable {
         tl.play();
     }
 /*
-setMsg¿ÉÄÜ´æÔÚÏß³ÌËøËÀµÄÇé¿ö£¬ÎÒÔÚÄ³´ÎÔËÐÐÊ±¿¨ËÀ²¢ÇÒ±¨´íÔÚ257ÐÐ
-µ±È»²»ÅÅ³ýÎÒµçÄÔÅÜ²»¶¯µÄÇé¿ö
+setMsgå¯èƒ½å­˜åœ¨çº¿ç¨‹é”æ­»çš„æƒ…å†µï¼Œæˆ‘åœ¨æŸæ¬¡è¿è¡Œæ—¶å¡æ­»å¹¶ä¸”æŠ¥é”™åœ¨257è¡Œ
+å½“ç„¶ä¸æŽ’é™¤æˆ‘ç”µè„‘è·‘ä¸åŠ¨çš„æƒ…å†µ
  */
     public void setMsg(String msg, double time) {
         if (msg == null || msg.length() == 0) {
@@ -280,7 +280,7 @@ setMsg¿ÉÄÜ´æÔÚÏß³ÌËøËÀµÄÇé¿ö£¬ÎÒÔÚÄ³´ÎÔËÐÐÊ±¿¨ËÀ²¢ÇÒ±¨´íÔÚ257ÐÐ
         lbl.setText(msg);
         messageBox.setVisible(true);
         EventListener.getMsgTimelinePool().stopAll();
-        //ÉèÖÃÆøÅÝµÄÏÔÊ¾Ê±¼ä
+        //è®¾ç½®æ°”æ³¡çš„æ˜¾ç¤ºæ—¶é—´
         Timeline tl = new Timeline(new KeyFrame(
                 Duration.seconds(time),
                 ae -> {
@@ -307,26 +307,26 @@ setMsg¿ÉÄÜ´æÔÚÏß³ÌËøËÀµÄÇé¿ö£¬ÎÒÔÚÄ³´ÎÔËÐÐÊ±¿¨ËÀ²¢ÇÒ±¨´íÔÚ257ÐÐ
     }
 
     /*
-     * Ö´ÐÐ"×ÔÐÐ×ß¶¯"µÄ¹¦ÄÜ¡ª¡ªÔÚË®Æ½·½ÏòÉÏ×ß¶¯
-     * ²»Ä¬ÈÏ¿ªÆôÊÇ¿¼ÂÇµ½ÓÃ»§¿ÉÄÜÖ»Ïë³èÎï°²¾²´ô×Å
+     * æ‰§è¡Œ"è‡ªè¡Œèµ°åŠ¨"çš„åŠŸèƒ½â€”â€”åœ¨æ°´å¹³æ–¹å‘ä¸Šèµ°åŠ¨
+     * ä¸é»˜è®¤å¼€å¯æ˜¯è€ƒè™‘åˆ°ç”¨æˆ·å¯èƒ½åªæƒ³å® ç‰©å®‰é™å‘†ç€
      */
     void walk() {
         Random rand = new Random();
-        //Èç¹û½«Òªµ½´ïÆÁÄ»±ßÔµ¾ÍÍ£ÏÂ
-        //Ëæ»ú¾ö¶¨ÒÆ¶¯µÄÊ±¼ä£¬µ¥Î»Î¢Ãëms
+        //å¦‚æžœå°†è¦åˆ°è¾¾å±å¹•è¾¹ç¼˜å°±åœä¸‹
+        //éšæœºå†³å®šç§»åŠ¨çš„æ—¶é—´ï¼Œå•ä½å¾®ç§’ms
         long time = (rand.nextInt(4) + 3) * 1000;
 //        System.out.println("Walking time:" + time);
-        int direID = rand.nextInt(2);//Ëæ»ú¾ö¶¨·½Ïò£¬0Îª×ó£¬1ÎªÓÒ
+        int direID = rand.nextInt(2);//éšæœºå†³å®šæ–¹å‘ï¼Œ0ä¸ºå·¦ï¼Œ1ä¸ºå³
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                //ÇÐ»»ÖÁ¶ÔÓ¦·½ÏòµÄÐÐ×ßÍ¼
+                //åˆ‡æ¢è‡³å¯¹åº”æ–¹å‘çš„è¡Œèµ°å›¾
                 if (direID == 1)
                     imageView.setImage(resourcesImage.getImage("Move"));
                 else
                     imageView.setImage(resourcesImage.getImage("MoveF"));
                 Platform.runLater(() -> setMsg(dialogAnalysis.randomDialog()));
-                //ÒÆ¶¯
+                //ç§»åŠ¨
                 listen.setBehavior("Move");
                 Move move = new Move(time, imageView, direID, primaryStage, listen);
                 thread = new Thread(move);
@@ -338,9 +338,9 @@ setMsg¿ÉÄÜ´æÔÚÏß³ÌËøËÀµÄÇé¿ö£¬ÎÒÔÚÄ³´ÎÔËÐÐÊ±¿¨ËÀ²¢ÇÒ±¨´íÔÚ257ÐÐ
     }
 
     /*
-     * Ö´ÐÐ"×ÔÓé×ÔÀÖ"µÄ¹¦ÄÜ¡ª¡ª¿ÕÏÐÊ±Ëæ»ú×ö¶¯×÷
-     * ÕâÑù¾Í²»ÓÃÊÜ²¿Î»ÊýÁ¿µÄÏÞÖÆ£¬Ò²²»»áÈÃ³èÎïÏÔµÃ´ô°å
-     * ²»Ä¬ÈÏ¿ªÆôÊÇ¿¼ÂÇµ½ÓÃ»§¿ÉÄÜÖ»Ïë³èÎï°²¾²´ô×Å
+     * æ‰§è¡Œ"è‡ªå¨±è‡ªä¹"çš„åŠŸèƒ½â€”â€”ç©ºé—²æ—¶éšæœºåšåŠ¨ä½œ
+     * è¿™æ ·å°±ä¸ç”¨å—éƒ¨ä½æ•°é‡çš„é™åˆ¶ï¼Œä¹Ÿä¸ä¼šè®©å® ç‰©æ˜¾å¾—å‘†æ¿
+     * ä¸é»˜è®¤å¼€å¯æ˜¯è€ƒè™‘åˆ°ç”¨æˆ·å¯èƒ½åªæƒ³å® ç‰©å®‰é™å‘†ç€
      */
     void play() {
         String behavior = randomAction();
