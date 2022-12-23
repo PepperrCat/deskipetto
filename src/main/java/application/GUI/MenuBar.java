@@ -1,5 +1,6 @@
 package application.GUI;
 
+import application.Dialog.DialogAnalysis;
 import application.Listener.EventListener;
 import application.Net.HttpClient;
 import javafx.application.Platform;
@@ -29,15 +30,15 @@ public class MenuBar {
     private boolean flag;
     private static VBox menuBox;
     /*
-        *init 初始化各个按钮的style以及功能 ！！！特地没用函数增加复用性就是为了增加代码量，请勿修改，提交前记得删除此注释！！！！！
-        *展示代码之前这一块得折叠起来
+        *
+        *
      */
     public static void init(){
-        Button b1 = new Button("Skin");
-        Button b2 = new Button("Roles");
-        Button b3 = new Button("Piano");
-        Button b4 = new Button("Add");
-        Button b5 = new Button("Talk");
+        Button b1 = new Button();
+        Button b2 = new Button();
+        Button b3 = new Button();
+        Button b4 = new Button();
+        Button b5 = new Button();
         TextInputDialog td = new TextInputDialog();
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
 //        stage.getIcons().add()
@@ -55,19 +56,19 @@ public class MenuBar {
         stage.getIcons().add(new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/icon.png"))));
         Image Image1 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/icon.png")));
+                "/skin_button.png")));
         ImageView b1Image=new ImageView(Image1);
         Image Image2 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/icon.png")));
+                "/role_button.png")));
         ImageView b2Image=new ImageView(Image2);
         Image Image3 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/icon.png")));
+                "/piano_button.png")));
         ImageView b3Image=new ImageView(Image3);
         Image Image4 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/icon.png")));
+                "/language_button.png")));
         ImageView b4Image=new ImageView(Image4);
         Image Image5 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/icon.png")));
+                "/chat_button.png")));
         ImageView b5Image=new ImageView(Image5);
         b1Image.setFitWidth(20);
         b1Image.setFitHeight(20);
@@ -196,7 +197,21 @@ public class MenuBar {
         b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("切换皮肤");
+                switch (DialogAnalysis.getLanguage()) {
+                    case "simplifiedChinese":
+                        DialogAnalysis.setLanguage("Japanese");
+                        break;
+                    case "Japanese":
+                        DialogAnalysis.setLanguage("Korean");
+                        break;
+                    case "Korean":
+                        DialogAnalysis.setLanguage("traditionalChinese");
+                        break;
+                    default:
+                        DialogAnalysis.setLanguage("simplifiedChinese");
+                        break;
+                }
+                System.out.println(DialogAnalysis.getLanguage());
                 Main.getMenuBar().change();
             }
         });
@@ -235,7 +250,7 @@ public class MenuBar {
         flag = false;
         pane.getChildren().add(menuBox);
         menuBox.setLayoutX(165);
-        menuBox.setLayoutY(50);
+        menuBox.setLayoutY(20);
         menuBox.setSpacing(10);
         menuBox.setVisible(false);
         init();

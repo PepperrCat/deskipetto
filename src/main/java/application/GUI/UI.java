@@ -287,7 +287,7 @@ setMsg可能存在线程锁死的情况，我在某次运行时卡死并且报错在257行
         if (dialog == null)
             return;
         Label lbl = (Label) messageBox.getChildren().get(0);
-        lbl.setText(dialog.getDetail("simplifiedChinese"));
+        lbl.setText(dialog.getDetail(DialogAnalysis.getLanguage()));
         messageBox.setVisible(true);
         EventListener.getMsgTimelinePool().stopAll();
         if (mediaPlayer != null)

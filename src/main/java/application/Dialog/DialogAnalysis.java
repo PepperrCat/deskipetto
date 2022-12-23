@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class DialogAnalysis {
+    private static String language = "simplifiedChinese";
     private Map<Integer ,Dialog> dialogs = new HashMap<>();
 
     public void startAnalyse() throws IOException, URISyntaxException {
@@ -41,5 +42,13 @@ public class DialogAnalysis {
             d = dialogs.get(r.nextInt(42));
         }
         return d;
+    }
+
+    public static String getLanguage() {
+        return language;
+    }
+
+    public static void setLanguage(String language) {
+        DialogAnalysis.language = language;
     }
 }
