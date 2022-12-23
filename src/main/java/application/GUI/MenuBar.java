@@ -1,6 +1,7 @@
 package application.GUI;
 
 import application.Dialog.DialogAnalysis;
+import application.Listener.Desuki;
 import application.Listener.EventListener;
 import application.Net.HttpClient;
 import application.Timer.Drink;
@@ -31,6 +32,7 @@ import java.util.Optional;
  * @since 0.1.0
  **/
 public class MenuBar {
+    public static ImageView likeImageView;private boolean like;
     private ImageView imageView;
     private EventListener listen;
     private Stage primaryStage;
@@ -50,6 +52,7 @@ public class MenuBar {
         Button b4 = new Button();
         Button b5 = new Button();
         Button b6 = new Button();
+        Button b7 = new Button();
         TextInputDialog td = new TextInputDialog();
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
 //        stage.getIcons().add()
@@ -80,7 +83,9 @@ public class MenuBar {
         ImageView b4Image = new ImageView(Image4);
         Image Image5 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/chat_button.png")));
-
+        Image Image7 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
+                "/chat_button.png")));
+        ImageView b7Image = new ImageView(Image4);
         ImageView b5Image = new ImageView(Image5);
         b1Image.setFitWidth(20);
         b1Image.setFitHeight(20);
@@ -92,7 +97,8 @@ public class MenuBar {
         b4Image.setFitHeight(20);
         b5Image.setFitWidth(20);
         b5Image.setFitHeight(20);
-
+        b7Image.setFitWidth(20);
+        b7Image.setFitHeight(20);
         Image Image6 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/drink-buttom.png")));
         ImageView b6Image = new ImageView(Image6);
@@ -105,6 +111,7 @@ public class MenuBar {
         b4.setGraphic(b4Image);
         b5.setGraphic(b5Image);
         b6.setGraphic(b6Image);
+        b7.setGraphic(b6Image);
         DropShadow shadow = new DropShadow();
         b1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
             @Override
@@ -138,6 +145,12 @@ public class MenuBar {
         });
 
         b6.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                b1.setEffect(shadow);
+            }
+        });
+        b7.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
                 b1.setEffect(shadow);
@@ -186,6 +199,15 @@ public class MenuBar {
         );
 
         b6.setStyle("-fx-background-radius:10;" +     //设置背景圆角
+                "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
+                "-fx-border-radius:10;" +         //设置边框圆角
+                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-style:solid;" +      //设置边框样式
+                "-fx-border-width:3;" +           //设置边框宽度
+                "-fx-border-insets:0"           //设置边框插入值
+        );
+
+        b7.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
                 "-fx-border-color:#98F5FF;" +     //设置边框颜色
@@ -300,7 +322,38 @@ public class MenuBar {
                 //打印button的text文本信息可以验证
             }
         });
+        b7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("好感度条");
+                Main.getMenuBar().change();
+                if(MenuBar.likeImageView!=null)
+                    System.out.println(MenuBar.likeImageView.toString());
+                boolean like=Main.getMenuBar().getLike();
+                System.out.println(like);
+                System.out.println(pane.getChildren().size());
+                if(like){
+                    MenuBar.likeImageView.setVisible(false);
+                    pane.getChildren().remove(MenuBar.likeImageView);
+                }
+                else{
+                    try {
+                        MenuBar.likeImageView = new ImageView(Draw.getLoveBar(Desuki.getInstance().getLikeGrade(), 200));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    MenuBar.likeImageView.setPreserveRatio(true);
+                    MenuBar.likeImageView.setFitWidth(200);
+                    MenuBar.likeImageView.setFitHeight(200);
+                    MenuBar.likeImageView.setLayoutY(230);
+                    //imageView.setVisible(true);
+                    pane.getChildren().add(MenuBar.likeImageView);
+                }
+                Main.getMenuBar().setLike(!like);
+            }
+        });
         menuBox.getChildren().addAll(b1, b2, b3);
+        menuBox.getChildren().add(b7);
         menuBox2.getChildren().addAll(b4, b5, b6);
     }
 
@@ -347,4 +400,6 @@ public class MenuBar {
     public static AnchorPane getPane() {
         return pane;
     }
+    public void setLike(boolean f) {like=f;}
+    public boolean getLike() {return like;}
 }

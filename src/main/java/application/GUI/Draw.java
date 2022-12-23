@@ -81,6 +81,8 @@ public class Draw extends JFrame {
      */
 
     public static javafx.scene.image.Image getLoveBar(int level, int cap) throws Exception {
+        small=targetImg=null;
+
         BufferedImage small = loveAddNum(level);
 
 
@@ -92,7 +94,7 @@ public class Draw extends JFrame {
 //        FileWriter fileWriter=new FileWriter(file);
         ImageIO.write(targetImg,"png",outStream);
         byte[] b= outStream.toByteArray();
-//        FileOutputStream out=new FileOutputStream("Test.png");
+//       new FileOutputStream("Test.png").write(b);
 
 
         ByteArrayInputStream inputStream=new ByteArrayInputStream(b);
