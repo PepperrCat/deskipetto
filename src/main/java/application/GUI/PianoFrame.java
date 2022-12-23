@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.Objects;
+
 /**
  *
  * @version 0.1.0
@@ -30,7 +33,14 @@ public class PianoFrame {
         return piano;
     }
     PianoFrame(AnchorPane pane) {
-        Image piano=new Image(ResourcesImage.class.getResource("/"+"Piano.png").toExternalForm());
+
+        Image piano=new Image(Objects.requireNonNull(ResourcesImage.class.getResource("/" + "Piano.png")).toExternalForm());
+
+//        try {
+//            piano = Draw.getLoveBar(77,200);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
         imageView = new ImageView(piano);
         imageView.setPreserveRatio(true);
         imageView.setFitWidth(200);
