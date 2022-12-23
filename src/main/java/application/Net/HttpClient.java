@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class HttpClient {
 
 
-    static org.apache.http.client.HttpClient client = HttpClientBuilder.create().build();
+    public static org.apache.http.client.HttpClient client = HttpClientBuilder.create().build();
     private static final String USER_AGENT = "Mozilla/5.0";
 
 //    public static void main(String[] args) throws Exception {

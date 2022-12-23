@@ -4,6 +4,7 @@ import application.Dialog.DialogAnalysis;
 import application.Listener.Desuki;
 import application.Listener.EventListener;
 import application.Listener.TimelinePool;
+import application.Music.MusicPlayer;
 import application.Net.HttpClient;
 import application.Timer.Drink;
 import javafx.animation.KeyFrame;
@@ -46,7 +47,7 @@ public class MenuBar {
     private static VBox menuBox;
     private static VBox menuBox2;
     private static TimelinePool likeImagePool = new TimelinePool();
-
+    private static MusicPlayer musicPlayer = new MusicPlayer();
     /*
      *
      *
@@ -59,6 +60,7 @@ public class MenuBar {
         Button b5 = new Button();
         Button b6 = new Button();
         Button b7 = new Button();
+        Button b8 = new Button();
         TextInputDialog td = new TextInputDialog();
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
 //        stage.getIcons().add()
@@ -93,6 +95,7 @@ public class MenuBar {
                 "/like_button.png")));
         ImageView b7Image = new ImageView(Image7);
         ImageView b5Image = new ImageView(Image5);
+
         b1Image.setFitWidth(20);
         b1Image.setFitHeight(20);
         b2Image.setFitWidth(20);
@@ -162,7 +165,12 @@ public class MenuBar {
                 b1.setEffect(shadow);
             }
         });
-
+        b8.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                b1.setEffect(shadow);
+            }
+        });
         b1.setStyle("-fx-background-radius:10;" +     //…Ë÷√±≥æ∞‘≤Ω«
                 "-fx-text-fill:#1C1C1C;" +        //…Ë÷√◊÷ÃÂ—’…´
                 "-fx-border-radius:10;" +         //…Ë÷√±ﬂøÚ‘≤Ω«
@@ -214,6 +222,14 @@ public class MenuBar {
         );
 
         b7.setStyle("-fx-background-radius:10;" +     //…Ë÷√±≥æ∞‘≤Ω«
+                "-fx-text-fill:#1C1C1C;" +        //…Ë÷√◊÷ÃÂ—’…´
+                "-fx-border-radius:10;" +         //…Ë÷√±ﬂøÚ‘≤Ω«
+                "-fx-border-color:#98F5FF;" +     //…Ë÷√±ﬂøÚ—’…´
+                "-fx-border-style:solid;" +      //…Ë÷√±ﬂøÚ—˘ Ω
+                "-fx-border-width:3;" +           //…Ë÷√±ﬂøÚøÌ∂»
+                "-fx-border-insets:0"           //…Ë÷√±ﬂøÚ≤Â»Î÷µ
+        );
+        b8.setStyle("-fx-background-radius:10;" +     //…Ë÷√±≥æ∞‘≤Ω«
                 "-fx-text-fill:#1C1C1C;" +        //…Ë÷√◊÷ÃÂ—’…´
                 "-fx-border-radius:10;" +         //…Ë÷√±ﬂøÚ‘≤Ω«
                 "-fx-border-color:#98F5FF;" +     //…Ë÷√±ﬂøÚ—’…´
@@ -360,8 +376,15 @@ public class MenuBar {
                 Main.getMenuBar().setLike(!like);
             }
         });
+        b8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                musicPlayer.setMedia(musicPlayer.randomize());
+                musicPlayer.play();
+            }
+        });
         menuBox.getChildren().addAll(b1, b2, b3, b7);
-        menuBox2.getChildren().addAll(b4, b5, b6);
+        menuBox2.getChildren().addAll(b4, b5, b6, b8);
     }
 
     public MenuBar(ImageView imageView, EventListener listen, AnchorPane pane) {
