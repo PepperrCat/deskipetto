@@ -4,8 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @projectName: oopDZY
@@ -65,6 +64,14 @@ public class Draw extends JFrame {
 //
 //    }
 
+
+//    public static void main(String[] args) {
+//       try {
+//           getLoveBar(1,3);
+//       }catch (Exception ignored){
+//
+//       }
+//    }
     /**
      * 使用此方法获取一个BufferedImage对象，该对象就是需要的进度条
      * <p>
@@ -73,14 +80,29 @@ public class Draw extends JFrame {
      * cap：进度上限
      */
 
-    public static BufferedImage getLoveBar(int level, int cap) throws IOException {
+    public static javafx.scene.image.Image getLoveBar(int level, int cap) throws Exception {
         BufferedImage small = loveAddNum(level);
 
 
         Graphics pen = targetImg.getGraphics();
         DrawFrame(sx + small.getWidth() / 2, sy, pen, level, cap);
         pen.drawImage(small, w * level / cap, h / 2 - small.getHeight() / 2, null);
-        return targetImg;
+        ByteArrayOutputStream outStream =new ByteArrayOutputStream();
+//        File file=new File("Test.png");
+//        FileWriter fileWriter=new FileWriter(file);
+        ImageIO.write(targetImg,"png",outStream);
+        byte[] b= outStream.toByteArray();
+//        FileOutputStream out=new FileOutputStream("Test.png");
+
+
+        ByteArrayInputStream inputStream=new ByteArrayInputStream(b);
+
+
+//        fileWriter.write(outStream.toString());
+//        OutputStreamWriter outputStreamWriter=new OutputStreamWriter(file);
+//
+        javafx.scene.image.Image image=new javafx.scene.image.Image(inputStream);
+        return image;
 //        ImageIO.write(targetImg, "png", new File("testBar.png"));
     }
 
