@@ -33,13 +33,12 @@ public class MenuBar {
         *展示代码之前这一块得折叠起来
      */
     public static void init(){
-        Button b1 = new Button("Skin resurfacing");
-        Button b2 = new Button("Switch roles");
-        Button b3 = new Button("Play piano");
-        Button b4 = new Button("Wait for the addition");
+        Button b1 = new Button("Skin");
+        Button b2 = new Button("Roles");
+        Button b3 = new Button("Piano");
+        Button b4 = new Button("Add");
         Button b5 = new Button("Talk");
         TextInputDialog td = new TextInputDialog();
-
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
 //        stage.getIcons().add()
 

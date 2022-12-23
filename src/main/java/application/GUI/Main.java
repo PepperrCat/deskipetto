@@ -82,7 +82,7 @@ public class Main extends Application {
             //设置窗体的初始位置
             primaryStage.setX(Screen.getPrimary().getVisualBounds().getMinX());
 
-            primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 200);
+            primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 250);
             primaryStage.setAlwaysOnTop(true);//窗口总显示在最前
             //修改任务栏图标
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
