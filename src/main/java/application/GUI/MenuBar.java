@@ -75,8 +75,10 @@ public class MenuBar {
         /*
          *功能列表目前的图标采用的是播出传的一张很丑的图标，可以替换，目前button的样式是我试了很多种感觉看起来比较正常的
          */
+        System.out.println(2);
         stage.getIcons().add(new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/icon.png"))));
+        System.out.println(1);
         Image Image1 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/skin_button.png")));
         ImageView b1Image = new ImageView(Image1);
@@ -93,6 +95,9 @@ public class MenuBar {
                 "/chat_button.png")));
         Image Image7 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/like_button.png")));
+        Image Image8 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
+                "/music_button.png")));
+        ImageView b8Image = new ImageView(Image8);
         ImageView b7Image = new ImageView(Image7);
         ImageView b5Image = new ImageView(Image5);
 
@@ -108,6 +113,8 @@ public class MenuBar {
         b5Image.setFitHeight(20);
         b7Image.setFitWidth(20);
         b7Image.setFitHeight(20);
+        b8Image.setFitWidth(20);
+        b8Image.setFitHeight(20);
         Image Image6 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/drink_button.png")));
         ImageView b6Image = new ImageView(Image6);
@@ -121,6 +128,7 @@ public class MenuBar {
         b5.setGraphic(b5Image);
         b6.setGraphic(b6Image);
         b7.setGraphic(b7Image);
+        b8.setGraphic(b8Image);
         DropShadow shadow = new DropShadow();
         b1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
             @Override

@@ -118,6 +118,7 @@ public class UI implements Runnable {
             });
 
             MenuItem itemExit = new MenuItem("ÍË³ö");
+//            itemExit.setFont(new Font("ºÚÌå",Font.PLAIN,16));
             itemExit.addActionListener(e -> end());
 
             popMenu.add(itemSwitch);

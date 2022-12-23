@@ -29,7 +29,7 @@ public class Desuki implements Serializable {
                     fileIn.close();
                 }
                    else INSTANCE = new Desuki();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
 
