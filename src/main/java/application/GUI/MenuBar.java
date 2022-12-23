@@ -3,8 +3,11 @@ package application.GUI;
 import application.Dialog.DialogAnalysis;
 import application.Listener.Desuki;
 import application.Listener.EventListener;
+import application.Listener.TimelinePool;
 import application.Net.HttpClient;
 import application.Timer.Drink;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 import java.util.Objects;
@@ -32,7 +36,8 @@ import java.util.Optional;
  * @since 0.1.0
  **/
 public class MenuBar {
-    public static ImageView likeImageView;private boolean like;
+    public static ImageView likeImageView;
+    private boolean like;
     private ImageView imageView;
     private EventListener listen;
     private Stage primaryStage;
@@ -40,6 +45,7 @@ public class MenuBar {
     private boolean flag;
     private static VBox menuBox;
     private static VBox menuBox2;
+    private static TimelinePool likeImagePool = new TimelinePool();
 
     /*
      *
@@ -84,7 +90,7 @@ public class MenuBar {
         Image Image5 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
                 "/chat_button.png")));
         Image Image7 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/hearts_button.png")));
+                "/like_button.png")));
         ImageView b7Image = new ImageView(Image7);
         ImageView b5Image = new ImageView(Image5);
         b1Image.setFitWidth(20);
@@ -100,7 +106,7 @@ public class MenuBar {
         b7Image.setFitWidth(20);
         b7Image.setFitHeight(20);
         Image Image6 = new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
-                "/drink-buttom.png")));
+                "/drink_button.png")));
         ImageView b6Image = new ImageView(Image6);
         b6Image.setFitWidth(20);
         b6Image.setFitHeight(20);
@@ -325,18 +331,13 @@ public class MenuBar {
         b7.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("好感度条");
                 Main.getMenuBar().change();
-                if(MenuBar.likeImageView!=null)
-                    System.out.println(MenuBar.likeImageView.toString());
-                boolean like=Main.getMenuBar().getLike();
-                System.out.println(like);
-                System.out.println(pane.getChildren().size());
-                if(like){
+                boolean like = Main.getMenuBar().getLike();
+                likeImagePool.stopAll();
+                if (like) {
                     MenuBar.likeImageView.setVisible(false);
                     pane.getChildren().remove(MenuBar.likeImageView);
-                }
-                else{
+                } else {
                     try {
                         MenuBar.likeImageView = new ImageView(Draw.getLoveBar(Desuki.getInstance().getLikeGrade(), 200));
                     } catch (Exception e) {
@@ -345,15 +346,21 @@ public class MenuBar {
                     MenuBar.likeImageView.setPreserveRatio(true);
                     MenuBar.likeImageView.setFitWidth(200);
                     MenuBar.likeImageView.setFitHeight(200);
-                    MenuBar.likeImageView.setLayoutY(230);
+                    MenuBar.likeImageView.setLayoutY(210);
                     //imageView.setVisible(true);
                     pane.getChildren().add(MenuBar.likeImageView);
+                    Timeline tl = new Timeline(new KeyFrame(Duration.seconds(5), ae -> {
+                        pane.getChildren().remove(MenuBar.likeImageView);
+                        MenuBar.likeImageView.setVisible(false);
+                        Main.getMenuBar().setLike(false);
+                    }));
+                    tl.play();
+                    likeImagePool.addTimeLine(tl);
                 }
                 Main.getMenuBar().setLike(!like);
             }
         });
-        menuBox.getChildren().addAll(b1, b2, b3);
-        menuBox.getChildren().add(b7);
+        menuBox.getChildren().addAll(b1, b2, b3, b7);
         menuBox2.getChildren().addAll(b4, b5, b6);
     }
 
@@ -400,6 +407,12 @@ public class MenuBar {
     public static AnchorPane getPane() {
         return pane;
     }
-    public void setLike(boolean f) {like=f;}
-    public boolean getLike() {return like;}
+
+    public void setLike(boolean f) {
+        like = f;
+    }
+
+    public boolean getLike() {
+        return like;
+    }
 }

@@ -133,7 +133,7 @@ public class ResourcesImage {
             Special = null;
             Relax = null;
             System.gc();    // 不一定真的运行，但还是写了保证至少开始回收
-            return getImage(behavior);
+            return getImage("Relax");
         }
         return Relax;
     }
