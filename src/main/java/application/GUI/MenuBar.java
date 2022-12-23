@@ -48,6 +48,7 @@ public class MenuBar {
     private static VBox menuBox2;
     private static TimelinePool likeImagePool = new TimelinePool();
     private static MusicPlayer musicPlayer = new MusicPlayer();
+
     /*
      *
      *
@@ -180,17 +181,17 @@ public class MenuBar {
             }
         });
         b1.setStyle("-fx-background-radius:10;" +     //设置背景圆角
-                "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
-                "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
-                "-fx-border-style:solid;" +      //设置边框样式
-                "-fx-border-width:3;" +           //设置边框宽度
-                "-fx-border-insets:0"           //设置边框插入值
+                        "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
+                        "-fx-border-radius:10;" +         //设置边框圆角
+                        "-fx-border-color:#7fbfc7;" +     //设置边框颜色
+                        "-fx-border-style:solid;" +      //设置边框样式
+                        "-fx-border-width:3;" +           //设置边框宽度
+                        "-fx-border-insets:0"           //设置边框插入值
         );
         b2.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#82b4c2;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -198,7 +199,7 @@ public class MenuBar {
         b3.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#86aabc;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -206,7 +207,7 @@ public class MenuBar {
         b4.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#8c95b1;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -214,7 +215,7 @@ public class MenuBar {
         b5.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#908aac;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -223,7 +224,7 @@ public class MenuBar {
         b6.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#937fa7;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -232,7 +233,7 @@ public class MenuBar {
         b7.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#899fb7;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
@@ -240,7 +241,7 @@ public class MenuBar {
         b8.setStyle("-fx-background-radius:10;" +     //设置背景圆角
                 "-fx-text-fill:#1C1C1C;" +        //设置字体颜色
                 "-fx-border-radius:10;" +         //设置边框圆角
-                "-fx-border-color:#98F5FF;" +     //设置边框颜色
+                "-fx-border-color:#9675a1;" +     //设置边框颜色
                 "-fx-border-style:solid;" +      //设置边框样式
                 "-fx-border-width:3;" +           //设置边框宽度
                 "-fx-border-insets:0"           //设置边框插入值
