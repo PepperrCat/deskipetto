@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 public class HttpClient {
 
+
     static org.apache.http.client.HttpClient client = HttpClientBuilder.create().build();
     private static final String USER_AGENT = "Mozilla/5.0";
 
@@ -58,26 +59,32 @@ public class HttpClient {
 
 
         HttpGet request = new HttpGet(url);
-
+//        System.out.println(1);
         //添加请求头
         request.addHeader("User-Agent", USER_AGENT);
+//        System.out.println(1.5);
+
 
         HttpResponse response = client.execute(request);
+        //这个位置第三次talk会卡住
 
+
+//        System.out.println(2);
 //        System.out.println("\nSending 'GET' request to URL : " + url);
 //        System.out.println("Response Code : " +
 //                response.getStatusLine().getStatusCode());
 
         BufferedReader rd = new BufferedReader(
                 new InputStreamReader(response.getEntity().getContent()));
-
+//        System.out.println(3);
         StringBuffer result = new StringBuffer();
         String line = "";
         while ((line = rd.readLine()) != null) {
             result.append(line);
         }
+        response.getEntity().getContent().close();//关闭结果集
         JSONObject jsonObject = new JSONObject(result.toString());
-
+//        System.out.println(4);
 //        System.out.println(jsonObject.getJSONObject("data").getJSONObject("info").getString("text"));
         return jsonObject.getJSONObject("data").getJSONObject("info").getString("text");
 

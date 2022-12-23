@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Objects;
+
 /**
  * the class that initial the stage
  * @version 0.1.0
@@ -76,7 +78,7 @@ public class Main extends Application {
 
             Scene scene = new Scene(pane, 400, 400);
             scene.setFill(null);
-            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/application.css")).toExternalForm());
 
             primaryStage.setScene(scene);
             //设置窗体的初始位置
@@ -85,7 +87,7 @@ public class Main extends Application {
             primaryStage.setY(Screen.getPrimary().getVisualBounds().getMaxY() - 200);
             primaryStage.setAlwaysOnTop(true);//窗口总显示在最前
             //修改任务栏图标
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
+            primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/icon.png"))));
 
             primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.initStyle(StageStyle.TRANSPARENT);//背景透明
