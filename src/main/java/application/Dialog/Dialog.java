@@ -2,6 +2,13 @@ package application.Dialog;
 
 import org.json.JSONObject;
 
+/**
+ * the class that stores the dialog
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:56:30
+ **/
 public class Dialog {
     private String title;
     private String voiceFilename;

@@ -21,7 +21,13 @@ import javafx.stage.Stage;
 import java.util.Objects;
 import java.util.Optional;
 
-
+/**
+ * build the menu
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:59:09
+ **/
 public class MenuBar {
     private ImageView imageView;
     private EventListener listen;

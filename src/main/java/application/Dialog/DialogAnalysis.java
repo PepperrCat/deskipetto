@@ -10,7 +10,13 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
+/**
+ * to analyze the dialog json
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:57:38
+ **/
 public class DialogAnalysis {
     private static String language = "simplifiedChinese";
     private Map<Integer ,Dialog> dialogs = new HashMap<>();

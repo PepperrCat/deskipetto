@@ -34,7 +34,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+/**
+ * gui
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 16:00:18
+ **/
 public class UI implements Runnable {
     private ImageView imageView;
     private EventListener listen;
