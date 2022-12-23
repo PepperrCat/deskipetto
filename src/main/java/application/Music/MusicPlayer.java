@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Random;
 
 /**
  * the class that play the music
@@ -27,7 +26,7 @@ public class MusicPlayer {
     private Media media;
     private File[] mediaFiles;
 
-    public void play() {
+    public void start() {
         if (media != null) {
             player = new MediaPlayer(media);
             player.play();
@@ -36,12 +35,21 @@ public class MusicPlayer {
         }
     }
 
+    public void pause() {
+        if (player != null) {
+            player.pause();
+        }
+    }
     public void stop() {
         if (player != null) {
             player.stop();
         }
     }
-
+    public void play() {
+        if (player != null) {
+            player.play();
+        }
+    }
     public void setMedia(Media media) {
         this.media = media;
     }
@@ -71,5 +79,8 @@ public class MusicPlayer {
 
         System.out.println(jsonObject.getString("name"));
         return jsonObject.getString("url");
+    }
+    public boolean isPlaying() {
+        return player.getStatus().equals(MediaPlayer.Status.PLAYING);
     }
 }

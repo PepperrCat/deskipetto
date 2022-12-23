@@ -385,11 +385,20 @@ public class MenuBar {
                 Main.getMenuBar().setLike(!like);
             }
         });
-        b8.setOnAction(new EventHandler<ActionEvent>() {
+        b8.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-                musicPlayer.setMedia(musicPlayer.randomize());
-                musicPlayer.play();
+            public void handle(MouseEvent e) {
+                if (e.getButton().name().equals("PRIMARY")) {
+                    musicPlayer.stop();
+                    musicPlayer.setMedia(musicPlayer.randomize());
+                    musicPlayer.start();
+                } else {
+                    if (musicPlayer.isPlaying())
+                        musicPlayer.pause();
+                    else {
+                        musicPlayer.play();
+                    }
+                }
             }
         });
         menuBox.getChildren().addAll(b1, b2, b3, b7);
