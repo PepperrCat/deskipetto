@@ -66,7 +66,7 @@ public class MenuBar {
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
 //        stage.getIcons().add()
 
-        // ¼à¿Ø¹Ø±ÕÊÂ¼ş£¬½«ÎÄ±¾ÊäÈëÖÃ¿Õ
+        // ç›‘æ§å…³é—­äº‹ä»¶ï¼Œå°†æ–‡æœ¬è¾“å…¥ç½®ç©º
         td.setOnCloseRequest(new EventHandler<DialogEvent>() {
             @Override
             public void handle(DialogEvent dialogEvent) {
@@ -74,7 +74,7 @@ public class MenuBar {
             }
         });
         /*
-         *¹¦ÄÜÁĞ±íÄ¿Ç°µÄÍ¼±ê²ÉÓÃµÄÊÇ²¥³ö´«µÄÒ»ÕÅºÜ³óµÄÍ¼±ê£¬¿ÉÒÔÌæ»»£¬Ä¿Ç°buttonµÄÑùÊ½ÊÇÎÒÊÔÁËºÜ¶àÖÖ¸Ğ¾õ¿´ÆğÀ´±È½ÏÕı³£µÄ
+         *åŠŸèƒ½åˆ—è¡¨ç›®å‰çš„å›¾æ ‡é‡‡ç”¨çš„æ˜¯æ’­å‡ºä¼ çš„ä¸€å¼ å¾ˆä¸‘çš„å›¾æ ‡ï¼Œå¯ä»¥æ›¿æ¢ï¼Œç›®å‰buttonçš„æ ·å¼æ˜¯æˆ‘è¯•äº†å¾ˆå¤šç§æ„Ÿè§‰çœ‹èµ·æ¥æ¯”è¾ƒæ­£å¸¸çš„
          */
         System.out.println(2);
         stage.getIcons().add(new Image(Objects.requireNonNull(ResourcesImage.class.getResourceAsStream(
@@ -180,74 +180,74 @@ public class MenuBar {
                 b1.setEffect(shadow);
             }
         });
-        b1.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                        "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                        "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                        "-fx-border-color:#7fbfc7;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                        "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                        "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                        "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b1.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                        "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                        "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                        "-fx-border-color:#7fbfc7;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                        "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                        "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                        "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
-        b2.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#82b4c2;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b2.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#82b4c2;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
-        b3.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#86aabc;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b3.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#86aabc;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
-        b4.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#8c95b1;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b4.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#8c95b1;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
-        b5.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#908aac;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
-        );
-
-        b6.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#937fa7;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b5.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#908aac;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
 
-        b7.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#899fb7;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+        b6.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#937fa7;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
-        b8.setStyle("-fx-background-radius:10;" +     //ÉèÖÃ±³¾°Ô²½Ç
-                "-fx-text-fill:#1C1C1C;" +        //ÉèÖÃ×ÖÌåÑÕÉ«
-                "-fx-border-radius:10;" +         //ÉèÖÃ±ß¿òÔ²½Ç
-                "-fx-border-color:#9675a1;" +     //ÉèÖÃ±ß¿òÑÕÉ«
-                "-fx-border-style:solid;" +      //ÉèÖÃ±ß¿òÑùÊ½
-                "-fx-border-width:3;" +           //ÉèÖÃ±ß¿ò¿í¶È
-                "-fx-border-insets:0"           //ÉèÖÃ±ß¿ò²åÈëÖµ
+
+        b7.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#899fb7;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
+        );
+        b8.setStyle("-fx-background-radius:10;" +     //è®¾ç½®èƒŒæ™¯åœ†è§’
+                "-fx-text-fill:#1C1C1C;" +        //è®¾ç½®å­—ä½“é¢œè‰²
+                "-fx-border-radius:10;" +         //è®¾ç½®è¾¹æ¡†åœ†è§’
+                "-fx-border-color:#9675a1;" +     //è®¾ç½®è¾¹æ¡†é¢œè‰²
+                "-fx-border-style:solid;" +      //è®¾ç½®è¾¹æ¡†æ ·å¼
+                "-fx-border-width:3;" +           //è®¾ç½®è¾¹æ¡†å®½åº¦
+                "-fx-border-insets:0"           //è®¾ç½®è¾¹æ¡†æ’å…¥å€¼
         );
         /**T
-         *¿ÉÒÔÊÔ×Å°Ñ¶Ô»°¿òÑùÊ½»»Ò»»»
+         *å¯ä»¥è¯•ç€æŠŠå¯¹è¯æ¡†æ ·å¼æ¢ä¸€æ¢
          */
 //        System.out.println( stage.getScene());
 
@@ -255,7 +255,7 @@ public class MenuBar {
         b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("ÇĞ»»Æ¤·ô");
+                System.out.println("åˆ‡æ¢çš®è‚¤");
                 Main.getMenuBar().change();
                 Main.getUi().switchSkin();
             }
@@ -263,26 +263,26 @@ public class MenuBar {
         b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("ÇĞ»»ÈËÎï");
+                System.out.println("åˆ‡æ¢äººç‰©");
                 Main.getMenuBar().change();
-                Main.getUi().switchPet(); // ¼ÓÈëÃÀÊõ×ÊÔ´ºó´ËÌõÃüÁî¿ÉÒÔÊ¹ÓÃ
+                Main.getUi().switchPet(); // åŠ å…¥ç¾æœ¯èµ„æºåæ­¤æ¡å‘½ä»¤å¯ä»¥ä½¿ç”¨
             }
         });
         /*
-         *µÚÈı¸ö¹¦ÄÜ£ºµ¯¸ÖÇÙ
-         * °´ESC»òÕßENTER¼üÍË³ö£¬Ğ´¸ö´æÁô3ÃëµÄ¶Ô»°¿ò£¨cyxÄ¿Ç°²»»á¶Ô»°¿ò£©
+         *ç¬¬ä¸‰ä¸ªåŠŸèƒ½ï¼šå¼¹é’¢ç´
+         * æŒ‰ESCæˆ–è€…ENTERé”®é€€å‡ºï¼Œå†™ä¸ªå­˜ç•™3ç§’çš„å¯¹è¯æ¡†ï¼ˆcyxç›®å‰ä¸ä¼šå¯¹è¯æ¡†ï¼‰
          */
         b3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("µ¯¸ÖÇÙ");
+                System.out.println("å¼¹é’¢ç´");
                 Main.getMenuBar().change();
                 PianoFrame pianoFrame = PianoFrame.getInstance(getPane());
                 pianoFrame.start();
             }
         });
         /*
-         *µÚËÄ¸ö¹¦ÄÜ³¢ÊÔ×öÒ»¸öÓéÀÖĞÔ¹¦ÄÜ£¬¿´ÄÜ·ñÌ×ÓÃ·²¡ÂµÄÎå×ÓÆå
+         *ç¬¬å››ä¸ªåŠŸèƒ½å°è¯•åšä¸€ä¸ªå¨±ä¹æ€§åŠŸèƒ½ï¼Œçœ‹èƒ½å¦å¥—ç”¨å‡¡Ã·çš„äº”å­æ£‹
          */
         b4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -307,15 +307,15 @@ public class MenuBar {
         });
         b5.setOnAction(new EventHandler<ActionEvent>() {
             /**
-             * b5°´Å¥£ºÆôÓÃai¶Ô»°
-             * ÒÑÖªbug£ºµÚÒ»¸ö×Ö·ûÎª¿Õ¸ñÊ±ºò»á±¨´í
-             * ÇëÊ¹ÓÃGBK
+             * b5æŒ‰é’®ï¼šå¯ç”¨aiå¯¹è¯
+             * å·²çŸ¥bugï¼šç¬¬ä¸€ä¸ªå­—ç¬¦ä¸ºç©ºæ ¼æ—¶å€™ä¼šæŠ¥é”™
+             * è¯·ä½¿ç”¨GBK
              */
             @Override
             public void handle(ActionEvent event) {
                 Main.getMenuBar().change();
-                //event.getSource()»ñÈ¡Ò»¸öObject¶ÔÏó Êµ¼Ê¾ÍÊÇÕâ¸öbutton ÕâÀïÎÒÃÇĞèÒªÇ¿ÖÆ×ªĞĞ
-                td.setHeaderText("ÄãºÃ°¡");
+                //event.getSource()è·å–ä¸€ä¸ªObjectå¯¹è±¡ å®é™…å°±æ˜¯è¿™ä¸ªbutton è¿™é‡Œæˆ‘ä»¬éœ€è¦å¼ºåˆ¶è½¬è¡Œ
+                td.setHeaderText("ä½ å¥½å•Š");
                 Optional<String> result = td.showAndWait();
                 if (result.isPresent()) {
                     try {
@@ -326,21 +326,21 @@ public class MenuBar {
                         throw new RuntimeException(e);
                     }
                 }
-                //´òÓ¡buttonµÄtextÎÄ±¾ĞÅÏ¢¿ÉÒÔÑéÖ¤
+                //æ‰“å°buttonçš„textæ–‡æœ¬ä¿¡æ¯å¯ä»¥éªŒè¯
             }
         });
 
         b6.setOnAction(new EventHandler<ActionEvent>() {
             //            /**
-//             * b5°´Å¥£ºÆôÓÃai¶Ô»°
-//             * ÒÑÖªbug£ºµÚÒ»¸ö×Ö·ûÎª¿Õ¸ñÊ±ºò»á±¨´í
-//             * ÇëÊ¹ÓÃGBK
+//             * b5æŒ‰é’®ï¼šå¯ç”¨aiå¯¹è¯
+//             * å·²çŸ¥bugï¼šç¬¬ä¸€ä¸ªå­—ç¬¦ä¸ºç©ºæ ¼æ—¶å€™ä¼šæŠ¥é”™
+//             * è¯·ä½¿ç”¨GBK
 //             */
             @Override
             public void handle(ActionEvent event) {
                 Main.getMenuBar().change();
-                //event.getSource()»ñÈ¡Ò»¸öObject¶ÔÏó Êµ¼Ê¾ÍÊÇÕâ¸öbutton ÕâÀïÎÒÃÇĞèÒªÇ¿ÖÆ×ªĞĞ
-                td.setHeaderText("ÉèÖÃºÈË®¼ä¸ô");
+                //event.getSource()è·å–ä¸€ä¸ªObjectå¯¹è±¡ å®é™…å°±æ˜¯è¿™ä¸ªbutton è¿™é‡Œæˆ‘ä»¬éœ€è¦å¼ºåˆ¶è½¬è¡Œ
+                td.setHeaderText("è®¾ç½®å–æ°´é—´éš”");
                 Optional<String> result = td.showAndWait();
                 if (result.isPresent()) {
                     try {
@@ -350,7 +350,7 @@ public class MenuBar {
                         throw new RuntimeException(e);
                     }
                 }
-                //´òÓ¡buttonµÄtextÎÄ±¾ĞÅÏ¢¿ÉÒÔÑéÖ¤
+                //æ‰“å°buttonçš„textæ–‡æœ¬ä¿¡æ¯å¯ä»¥éªŒè¯
             }
         });
         b7.setOnAction(new EventHandler<ActionEvent>() {
@@ -419,7 +419,7 @@ public class MenuBar {
     }
 
     public void change() {
-        //Èç¹ûflag=false£¬´ò¿ª²Ëµ¥£¬·ñÔò¹Ø±Õ²Ëµ¥
+        //å¦‚æœflag=falseï¼Œæ‰“å¼€èœå•ï¼Œå¦åˆ™å…³é—­èœå•
         if (flag) {
             menuBox.setVisible(false);
             menuBox2.setVisible(false);
