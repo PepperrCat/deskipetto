@@ -8,7 +8,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-
+/**
+ *
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:59:25
+ **/
 public class PianoFrame {
     /*
      * 弹琴游戏类

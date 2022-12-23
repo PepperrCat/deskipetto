@@ -1,5 +1,12 @@
 package application.Dialog;
 
+/**
+ * classify the dialog contents by language
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:58:27
+ **/
 public class LanguageMap {
     private String simplifiedChinese;
     private String Japanese;

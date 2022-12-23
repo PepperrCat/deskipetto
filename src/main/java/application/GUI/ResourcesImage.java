@@ -1,7 +1,13 @@
 package application.GUI;
 
 import javafx.scene.image.Image;
-
+/**
+ *
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:59:42
+ **/
 public class ResourcesImage {
     private Image Relax;
     private Image Sit;

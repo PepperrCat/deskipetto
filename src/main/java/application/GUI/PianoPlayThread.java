@@ -3,7 +3,13 @@ package application.GUI;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-
+/**
+ *
+ * @version 0.1.0
+ * @author ppcat
+ * @since 0.1.0
+ * @date 2022-12-23 15:59:31
+ **/
 public class PianoPlayThread extends Thread {
     String url;
     private void playPiano(String url) {
