@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Objects;
 
 /**
  * @projectName: oopDZY
@@ -28,7 +29,7 @@ public class Draw extends JFrame {
 
     static {
         try {
-            srcBuffer = ImageIO.read(new File("src/main/resources/bixin.png"));
+            srcBuffer = ImageIO.read(Objects.requireNonNull(Draw.class.getResourceAsStream("/bixin.png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

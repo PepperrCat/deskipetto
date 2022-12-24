@@ -3,6 +3,7 @@ package application.Net;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import org.apache.http.HttpResponse;
@@ -75,7 +76,7 @@ public class HttpClient {
 //                response.getStatusLine().getStatusCode());
 
         BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
+                new InputStreamReader(response.getEntity().getContent(), StandardCharsets.UTF_8));
 //        System.out.println(3);
         StringBuffer result = new StringBuffer();
         String line = "";

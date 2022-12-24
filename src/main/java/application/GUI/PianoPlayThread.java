@@ -1,8 +1,11 @@
 package application.GUI;
 
 import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+
 /**
  *
  * @version 0.1.0
@@ -11,16 +14,12 @@ import java.io.IOException;
  * @date 2022-12-23 15:59:31
  **/
 public class PianoPlayThread extends Thread {
-    String url;
-    private void playPiano(String url) {
+    InputStream inputStream;
+    private void playPiano(InputStream inputStream) {
         //播放琴音方法
         try {
             //获取音频输入流
-            File file = new File(url);
-            if(!file.exists()){
-                System.out.println("file不存在");
-            }
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(inputStream));
            // System.out.println("获取音频输入流成功");
             //获取音频编码对象
             AudioFormat audioFormat = audioInputStream.getFormat();
@@ -44,10 +43,10 @@ public class PianoPlayThread extends Thread {
             e.printStackTrace();
         }
     }
-    public PianoPlayThread(String url){
-        this.url = url;
+    public PianoPlayThread(InputStream inputStream){
+        this.inputStream = inputStream;
     }
     public void run() {
-        playPiano(url);
+        playPiano(inputStream);
     }
 }

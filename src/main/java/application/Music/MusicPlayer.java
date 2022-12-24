@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * the class that play the music
@@ -67,7 +68,7 @@ public class MusicPlayer {
         request.addHeader("User-Agent", "Mozilla/5.0");
         HttpResponse response = HttpClient.client.execute(request);
         BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
+                new InputStreamReader(response.getEntity().getContent(), StandardCharsets.UTF_8));
 //        System.out.println(3);
         StringBuffer result = new StringBuffer();
         String line = "";
